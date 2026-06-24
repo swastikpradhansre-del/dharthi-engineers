@@ -4,18 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dharthi Engineers – Keeping Industries Powered, Productive, and Protected</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
     :root {
-      --navy: #0F1C2E;
+      --navy: #011d51;
       --amber: #F5A623;
-      --steel: #2E6DA4;
+      --steel: #1a4a9e;
       --offwhite: #F8F6F1;
       --midgrey: #8A99AA;
-      --darksteel: #1A3A5C;
+      --darksteel: #01163d;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -30,7 +27,7 @@
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      background: rgba(15,28,46,0.97);
+      background: rgba(1,29,81,0.97);
       backdrop-filter: blur(8px);
       border-bottom: 2px solid var(--amber);
       transition: all 0.3s ease;
@@ -73,7 +70,7 @@
       .nav-links.open {
         display: flex; flex-direction: column;
         position: absolute; top: 68px; left: 0; right: 0;
-        background: rgba(15,28,46,0.99);
+        background: rgba(1,29,81,0.99);
         padding: 1rem 2rem 1.5rem;
         gap: 0.25rem;
         border-bottom: 2px solid var(--amber);
@@ -90,8 +87,8 @@
     .hero-bg-grid {
       position: absolute; inset: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(46,109,164,0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(46,109,164,0.07) 1px, transparent 1px);
+        linear-gradient(rgba(26,74,158,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,74,158,0.07) 1px, transparent 1px);
       background-size: 60px 60px;
     }
     .hero-bg-glow {
@@ -108,7 +105,6 @@
       background: radial-gradient(circle, var(--steel), transparent);
       bottom: -150px; left: -100px;
     }
-    /* Animated power line */
     .power-line {
       position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       pointer-events: none; overflow: hidden;
@@ -119,9 +115,7 @@
       stroke-dasharray: 1200; stroke-dashoffset: 1200;
       animation: drawLine 3s ease forwards 0.5s;
     }
-    @keyframes drawLine {
-      to { stroke-dashoffset: 0; }
-    }
+    @keyframes drawLine { to { stroke-dashoffset: 0; } }
     .hero-content {
       position: relative; z-index: 2; max-width: 1280px;
       margin: 0 auto; padding: 0 2rem; padding-top: 68px;
@@ -174,7 +168,7 @@
       border-radius: 12px; overflow: hidden; margin-top: 3rem;
     }
     .stat-item {
-      padding: 1.5rem; background: rgba(15,28,46,0.5);
+      padding: 1.5rem; background: rgba(1,29,81,0.5);
       text-align: center;
     }
     .stat-num {
@@ -183,7 +177,6 @@
       line-height: 1; margin-bottom: 4px;
     }
     .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; }
-    /* Hero right: service tags */
     .hero-right { display: flex; flex-direction: column; gap: 1rem; }
     @media(max-width:900px) { .hero-right { display: none; } }
     .service-card {
@@ -194,7 +187,7 @@
       display: flex; align-items: center; gap: 1rem;
       transition: all 0.3s;
     }
-    .service-card:hover { background: rgba(245,166,35,0.06); border-left-color: var(--amber); transform: translateX(6px); }
+    .service-card:hover { background: rgba(245,166,35,0.06); transform: translateX(6px); }
     .service-card-icon { font-size: 1.5rem; flex-shrink: 0; }
     .service-card-title { color: white; font-weight: 600; font-size: 0.88rem; }
     .service-card-desc { color: rgba(255,255,255,0.45); font-size: 0.75rem; margin-top: 2px; }
@@ -216,10 +209,7 @@
     .section-title.light { color: white; }
     .section-lead { font-size: 1.05rem; color: #4A5C6E; line-height: 1.75; max-width: 640px; }
     .section-lead.light { color: rgba(255,255,255,0.65); }
-    .divider {
-      width: 60px; height: 3px; background: var(--amber);
-      margin-bottom: 1.5rem;
-    }
+    .divider { width: 60px; height: 3px; background: var(--amber); margin-bottom: 1.5rem; }
 
     /* ABOUT */
     #about { background: var(--offwhite); }
@@ -238,10 +228,7 @@
         linear-gradient(90deg, rgba(245,166,35,0.06) 1px, transparent 1px);
       background-size: 30px 30px;
     }
-    .about-circuit {
-      position: relative; z-index: 2; text-align: center;
-      padding: 2rem;
-    }
+    .about-circuit { position: relative; z-index: 2; text-align: center; padding: 2rem; }
     .about-circuit-icon { font-size: 5rem; margin-bottom: 1rem; opacity: 0.8; }
     .about-circuit-text {
       font-family: 'Playfair Display', serif;
@@ -250,7 +237,7 @@
     .about-circuit-text strong { color: var(--amber); font-size: 2rem; display: block; margin-bottom: 4px; }
     .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
     .badge {
-      background: rgba(46,109,164,0.1); border: 1px solid rgba(46,109,164,0.2);
+      background: rgba(26,74,158,0.1); border: 1px solid rgba(26,74,158,0.2);
       color: var(--darksteel); font-size: 0.78rem; font-weight: 600;
       padding: 6px 14px; border-radius: 100px; letter-spacing: 0.03em;
     }
@@ -271,7 +258,7 @@
     @media(max-width:900px) { .founder-grid { grid-template-columns: 1fr; gap: 2rem; } }
     .founder-photo {
       width: 240px; height: 300px;
-      background: linear-gradient(145deg, var(--darksteel), #0d2540);
+      background: linear-gradient(145deg, var(--darksteel), #011029);
       border-radius: 12px; overflow: hidden;
       border: 2px solid rgba(245,166,35,0.3);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -298,26 +285,17 @@
     .founder-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; font-weight: 700; }
     .founder-title { color: var(--amber); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
 
-    /* VISION MISSION */
+    /* VISION MISSION — removed card style, now plain inline */
     #vision { background: white; }
-    .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    @media(max-width:700px) { .vm-grid { grid-template-columns: 1fr; } }
-    .vm-card {
-      padding: 2.5rem; border-radius: 12px; position: relative; overflow: hidden;
-    }
-    .vm-card.vision { background: var(--navy); }
-    .vm-card.mission { background: var(--darksteel); }
-    .vm-card-bg {
-      position: absolute; bottom: -30px; right: -30px;
-      font-size: 8rem; opacity: 0.05; line-height: 1;
-    }
-    .vm-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+    @media(max-width:700px) { .vm-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .vm-item { padding: 2rem 0; border-top: 3px solid var(--amber); }
     .vm-label {
-      color: var(--amber); font-size: 0.72rem; font-weight: 700;
+      color: var(--steel); font-size: 0.72rem; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem;
     }
-    .vm-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; margin-bottom: 1rem; }
-    .vm-text { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.8; }
+    .vm-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 1rem; font-weight: 700; }
+    .vm-text { color: #4A5C6E; font-size: 0.95rem; line-height: 1.8; }
 
     /* WHY CHOOSE */
     #why { background: var(--offwhite); }
@@ -329,7 +307,6 @@
       box-shadow: 0 2px 16px rgba(0,0,0,0.05);
       border-top: 3px solid transparent;
       transition: all 0.3s;
-      position: relative; overflow: hidden;
     }
     .why-card:hover { border-top-color: var(--amber); transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
     .why-icon { font-size: 2rem; margin-bottom: 1rem; }
@@ -343,7 +320,7 @@
     @media(max-width:500px) { .deliver-grid { grid-template-columns: 1fr; } }
     .deliver-item {
       padding: 2.5rem 1.5rem; text-align: center;
-      background: rgba(15,28,46,0.6);
+      background: rgba(1,29,81,0.6);
       transition: background 0.3s;
     }
     .deliver-item:hover { background: rgba(245,166,35,0.08); }
@@ -381,8 +358,7 @@
     .ind-card {
       background: white; border-radius: 10px; padding: 1.75rem 1rem;
       text-align: center; border: 1px solid #E8EDF2;
-      transition: all 0.3s;
-      cursor: default;
+      transition: all 0.3s; cursor: default;
     }
     .ind-card:hover { border-color: var(--amber); box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-3px); }
     .ind-icon { font-size: 2rem; margin-bottom: 0.75rem; }
@@ -394,7 +370,7 @@
     @media(max-width:700px) { .intl-grid { grid-template-columns: 1fr; } }
     .intl-card {
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px; padding: 2.5rem; position: relative; overflow: hidden;
+      border-radius: 12px; padding: 2.5rem;
     }
     .intl-card:hover { background: rgba(255,255,255,0.07); }
     .intl-flag { font-size: 3rem; margin-bottom: 1rem; }
@@ -418,7 +394,7 @@
       border: 1px solid #E8EDF2; border-radius: 12px;
       transition: all 0.3s;
     }
-    .tech-card:hover { border-color: var(--steel); box-shadow: 0 6px 24px rgba(46,109,164,0.1); }
+    .tech-card:hover { border-color: var(--steel); box-shadow: 0 6px 24px rgba(26,74,158,0.1); }
     .tech-icon { font-size: 3rem; margin-bottom: 1.25rem; }
     .tech-title { font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.75rem; }
     .tech-desc { font-size: 0.85rem; color: #5A6A7A; line-height: 1.75; }
@@ -429,19 +405,13 @@
       padding: 5rem 0;
     }
     .breakdown-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-    .breakdown-content { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
-    @media(max-width:700px) { .breakdown-content { grid-template-columns: 1fr; } }
+    .breakdown-content { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
     .breakdown-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900;
       color: var(--navy); margin-bottom: 1rem; line-height: 1.2;
     }
-    .breakdown-text { color: rgba(15,28,46,0.75); font-size: 1rem; line-height: 1.75; max-width: 580px; }
-    .breakdown-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem; font-weight: 900; color: var(--navy);
-      opacity: 0.15; line-height: 1; text-align: center; white-space: nowrap;
-    }
+    .breakdown-text { color: rgba(1,29,81,0.75); font-size: 1rem; line-height: 1.75; max-width: 680px; }
     .breakdown-highlights { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
     .breakdown-hl { display: flex; align-items: center; gap: 8px; }
     .breakdown-hl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--navy); opacity: 0.6; }
@@ -461,7 +431,8 @@
       height: 140px; background: linear-gradient(135deg, var(--navy), var(--darksteel));
       display: flex; align-items: center; justify-content: center; position: relative;
     }
-    .equip-photo-icon { font-size: 3.5rem; opacity: 0.5; }
+    /* SVG illustration styles */
+    .equip-svg { width: 80px; height: 80px; opacity: 0.85; }
     .equip-photo-badge {
       position: absolute; top: 10px; right: 10px;
       background: rgba(245,166,35,0.2); border: 1px solid rgba(245,166,35,0.4);
@@ -540,7 +511,7 @@
 
     /* FOOTER */
     footer {
-      background: #070F1A; border-top: 1px solid rgba(255,255,255,0.06);
+      background: #010e28; border-top: 1px solid rgba(255,255,255,0.06);
       padding: 2rem 0;
     }
     .footer-inner {
@@ -631,7 +602,7 @@
       <h1 class="hero-title">
         Keeping Industries<br/>
         <span class="accent">Powered,</span> Productive<br/>
-        & Protected.
+        &amp; Protected.
       </h1>
       <p class="hero-tagline">
         Bengaluru's trusted electrical engineering partner for <strong>LT &amp; HT systems</strong>.
@@ -661,8 +632,8 @@
       <div class="service-card">
         <div class="service-card-icon">🔌</div>
         <div>
-          <div class="service-card-title">Electrical Maintenance & AMC</div>
-          <div class="service-card-desc">Preventive, predictive & breakdown programs</div>
+          <div class="service-card-title">Electrical Maintenance &amp; AMC</div>
+          <div class="service-card-desc">Preventive, predictive &amp; breakdown programs</div>
         </div>
       </div>
       <div class="service-card">
@@ -675,7 +646,7 @@
       <div class="service-card">
         <div class="service-card-icon">🌡️</div>
         <div>
-          <div class="service-card-title">Thermography & Power Audit</div>
+          <div class="service-card-title">Thermography &amp; Power Audit</div>
           <div class="service-card-desc">Diagnostic-driven reliability solutions</div>
         </div>
       </div>
@@ -727,7 +698,7 @@
         </ul>
         <div class="about-badges">
           <span class="badge">ABB-Trained</span>
-          <span class="badge">LT & HT Systems</span>
+          <span class="badge">LT &amp; HT Systems</span>
           <span class="badge">Predictive Maintenance</span>
           <span class="badge">Italy Certified</span>
           <span class="badge">International Projects</span>
@@ -769,18 +740,16 @@
   </div>
 </section>
 
-<!-- VISION & MISSION -->
+<!-- VISION & MISSION — plain layout, no dark cards -->
 <section id="vision">
   <div class="section-inner">
-    <div style="text-align:center; margin-bottom:3rem;" class="fade-up">
-      <div class="section-eyebrow" style="justify-content:center;">Guiding Principles</div>
-      <div class="divider" style="margin:0 auto;"></div>
-      <h2 class="section-title" style="margin-top:1rem;">Vision & Mission</h2>
+    <div class="fade-up">
+      <div class="section-eyebrow">Guiding Principles</div>
+      <div class="divider"></div>
+      <h2 class="section-title">Vision &amp; Mission</h2>
     </div>
     <div class="vm-grid fade-up">
-      <div class="vm-card vision">
-        <div class="vm-card-bg">👁</div>
-        <div class="vm-icon">🎯</div>
+      <div class="vm-item">
         <div class="vm-label">Our Vision</div>
         <div class="vm-title">The Preferred Electrical Reliability Partner</div>
         <p class="vm-text">
@@ -788,9 +757,7 @@
           and uninterrupted operations through engineering excellence, innovation, and responsive service.
         </p>
       </div>
-      <div class="vm-card mission">
-        <div class="vm-card-bg">🚀</div>
-        <div class="vm-icon">⚙️</div>
+      <div class="vm-item">
         <div class="vm-label">Our Mission</div>
         <div class="vm-title">Delivering Operational Continuity</div>
         <p class="vm-text">
@@ -829,7 +796,7 @@
       </div>
       <div class="why-card fade-up">
         <div class="why-icon">🔬</div>
-        <div class="why-title">Predictive Maintenance & Diagnostics</div>
+        <div class="why-title">Predictive Maintenance &amp; Diagnostics</div>
         <p class="why-desc">Advanced thermography, power quality audits, and diagnostic tools enable proactive asset management before failures occur.</p>
       </div>
       <div class="why-card fade-up">
@@ -846,16 +813,12 @@
   </div>
 </section>
 
-<!-- WHAT WE DELIVER -->
+<!-- WHAT WE DELIVER — removed subtitle text -->
 <section id="deliver">
   <div class="section-inner">
     <div style="text-align:center;" class="fade-up">
-      <div class="section-eyebrow" style="justify-content:center; color:var(--midgrey);">Outcomes We Create</div>
-      <div class="divider" style="margin:0 auto;"></div>
-      <h2 class="section-title light" style="margin-top:1rem;">What We Deliver</h2>
-      <p class="section-lead light" style="margin:0 auto; text-align:center;">
-        Every engagement is engineered to produce measurable, lasting improvements to your operations.
-      </p>
+      <div class="divider" style="margin:0 auto 1.5rem;"></div>
+      <h2 class="section-title light">What We Deliver</h2>
     </div>
     <div class="deliver-grid fade-up">
       <div class="deliver-item">
@@ -887,11 +850,10 @@
   </div>
 </section>
 
-<!-- SOLUTIONS -->
+<!-- SOLUTIONS — removed eyebrow label -->
 <section id="solutions">
   <div class="section-inner">
     <div class="fade-up">
-      <div class="section-eyebrow">Our Services</div>
       <div class="divider"></div>
       <h2 class="section-title">Our Solutions</h2>
       <p class="section-lead">Comprehensive electrical engineering services designed to keep your operations running at peak performance.</p>
@@ -899,7 +861,7 @@
     <div class="solutions-grid">
       <div class="sol-card fade-up">
         <div class="sol-icon-wrap">🔌</div>
-        <div class="sol-title">Electrical Maintenance & Asset Management</div>
+        <div class="sol-title">Electrical Maintenance &amp; Asset Management</div>
         <p class="sol-desc">Preventive, predictive, shutdown, and breakdown maintenance programs designed to improve equipment reliability and operational continuity. Tailored AMC packages for industries of all scales.</p>
         <div class="sol-arrow">→</div>
       </div>
@@ -917,19 +879,19 @@
       </div>
       <div class="sol-card fade-up">
         <div class="sol-icon-wrap">🌡️</div>
-        <div class="sol-title">Testing & Diagnostic Services</div>
-        <p class="sol-desc">Thermography, protection relay calibration and testing, PT & CT testing, Electrical Power Quality Audits, and root cause analysis for persistent electrical faults.</p>
+        <div class="sol-title">Testing &amp; Diagnostic Services</div>
+        <p class="sol-desc">Thermography, protection relay calibration and testing, PT &amp; CT testing, Electrical Power Quality Audits, and root cause analysis for persistent electrical faults.</p>
         <div class="sol-arrow">→</div>
       </div>
       <div class="sol-card fade-up">
         <div class="sol-icon-wrap">🖥️</div>
-        <div class="sol-title">Control Panel & Automation Solutions</div>
+        <div class="sol-title">Control Panel &amp; Automation Solutions</div>
         <p class="sol-desc">PCC, MCC, APFC, DG Sync Panels and PLC panel services including upgrades, troubleshooting, retrofits, and modification. Full lifecycle support for industrial control infrastructure.</p>
         <div class="sol-arrow">→</div>
       </div>
       <div class="sol-card fade-up">
         <div class="sol-icon-wrap">🌍</div>
-        <div class="sol-title">Earthing & Safety Solutions</div>
+        <div class="sol-title">Earthing &amp; Safety Solutions</div>
         <p class="sol-desc">Earth pit reconditioning, earth resistance testing, compliance verification, and comprehensive electrical safety assessments to protect personnel and equipment.</p>
         <div class="sol-arrow">→</div>
       </div>
@@ -937,11 +899,10 @@
   </div>
 </section>
 
-<!-- INDUSTRIES -->
+<!-- INDUSTRIES — removed eyebrow label -->
 <section id="industries">
   <div class="section-inner">
     <div style="text-align:center;" class="fade-up">
-      <div class="section-eyebrow" style="justify-content:center;">Sectors We Serve</div>
       <div class="divider" style="margin:0 auto;"></div>
       <h2 class="section-title" style="margin-top:1rem;">Industries We Serve</h2>
       <p class="section-lead" style="margin:0 auto; text-align:center;">
@@ -953,7 +914,7 @@
       <div class="ind-card"><div class="ind-icon">⚡</div><div class="ind-label">Power Generation</div></div>
       <div class="ind-card"><div class="ind-icon">🏢</div><div class="ind-label">Commercial Buildings</div></div>
       <div class="ind-card"><div class="ind-icon">🏗</div><div class="ind-label">Infrastructure Projects</div></div>
-      <div class="ind-card"><div class="ind-icon">🚛</div><div class="ind-label">Warehousing & Logistics</div></div>
+      <div class="ind-card"><div class="ind-icon">🚛</div><div class="ind-label">Warehousing &amp; Logistics</div></div>
       <div class="ind-card"><div class="ind-icon">🔧</div><div class="ind-label">EPC Contractors</div></div>
       <div class="ind-card"><div class="ind-icon">⚗️</div><div class="ind-label">Process Industries</div></div>
       <div class="ind-card"><div class="ind-icon">🌐</div><div class="ind-label">Utilities</div></div>
@@ -1036,7 +997,7 @@
   </div>
 </section>
 
-<!-- 24/7 BREAKDOWN -->
+<!-- 24/7 BREAKDOWN — removed "24/7" large number; "Call Now" button now links to #contact -->
 <section id="breakdown">
   <div class="breakdown-inner">
     <div class="breakdown-content fade-up">
@@ -1050,50 +1011,166 @@
           <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">Rapid Emergency Response</div></div>
           <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">Expert Fault Diagnosis</div></div>
           <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">Minimal Production Loss</div></div>
-          <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">All Major Makes & Models</div></div>
+          <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">All Major Makes &amp; Models</div></div>
         </div>
-        <a href="tel:+919972595963" class="btn-primary" style="margin-top:2rem; background:var(--navy); color:white; box-shadow:0 4px 20px rgba(15,28,46,0.3);">📞 Call Now: +91 99725 95963</a>
+        <a href="tel:+919972595963" class="btn-primary" style="margin-top:2rem; background:var(--navy); color:white; box-shadow:0 4px 20px rgba(1,29,81,0.3);">📞 Call Now: +91 99725 95963</a>
       </div>
-      <div class="breakdown-number">24/7</div>
     </div>
   </div>
 </section>
 
-<!-- EQUIPMENT -->
+<!-- EQUIPMENT — replaced emoji placeholders with SVG illustrations; updated badge list -->
 <section id="equipment">
   <div class="section-inner">
     <div class="fade-up">
       <div class="section-eyebrow">Testing Tools</div>
       <div class="divider"></div>
-      <h2 class="section-title">Equipment & Testing Capabilities</h2>
+      <h2 class="section-title">Equipment &amp; Testing Capabilities</h2>
       <p class="section-lead">Industry-standard instruments enabling accurate diagnostics, predictive maintenance, and reliable commissioning.</p>
     </div>
     <div class="equip-grid fade-up">
+
+      <!-- Thermal Imaging Camera -->
       <div class="equip-card">
-        <div class="equip-photo"><div class="equip-photo-icon">🌡️</div><div class="equip-photo-badge">Thermal</div></div>
-        <div class="equip-info"><div class="equip-name">Thermal Imaging Camera</div><div class="equip-use">Predictive diagnostics & hot-spot detection</div></div>
+        <div class="equip-photo">
+          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="22" width="50" height="36" rx="5" fill="#1a4a9e" stroke="#F5A623" stroke-width="1.5"/>
+            <circle cx="35" cy="40" r="11" fill="#011d51" stroke="#F5A623" stroke-width="1.5"/>
+            <circle cx="35" cy="40" r="6" fill="#011d51" stroke="rgba(245,166,35,0.5)" stroke-width="1"/>
+            <circle cx="35" cy="40" r="2.5" fill="#F5A623"/>
+            <rect x="60" y="30" width="10" height="20" rx="3" fill="#1a4a9e" stroke="#F5A623" stroke-width="1"/>
+            <rect x="15" y="27" width="8" height="5" rx="1" fill="#F5A623" opacity="0.6"/>
+            <line x1="22" y1="22" x2="22" y2="16" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="30" y1="22" x2="30" y2="14" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+            <line x1="38" y1="22" x2="38" y2="16" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="equip-photo-badge">Thermal</div>
+        </div>
+        <div class="equip-info">
+          <div class="equip-name">Thermal Imaging Camera</div>
+          <div class="equip-use">Predictive diagnostics &amp; hot-spot detection</div>
+        </div>
       </div>
+
+      <!-- Relay Test Kit -->
       <div class="equip-card">
-        <div class="equip-photo"><div class="equip-photo-icon">🔌</div><div class="equip-photo-badge">Relay</div></div>
-        <div class="equip-info"><div class="equip-name">Relay Test Kit</div><div class="equip-use">Protection relay calibration & testing</div></div>
+        <div class="equip-photo">
+          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="18" width="44" height="44" rx="4" fill="#1a4a9e" stroke="#F5A623" stroke-width="1.5"/>
+            <rect x="18" y="24" width="32" height="18" rx="2" fill="#011d51" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+            <circle cx="24" cy="33" r="3" fill="#F5A623"/>
+            <circle cx="34" cy="33" r="3" fill="rgba(245,166,35,0.4)"/>
+            <circle cx="44" cy="33" r="3" fill="rgba(245,166,35,0.4)"/>
+            <rect x="18" y="47" width="14" height="8" rx="2" fill="#011d51" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+            <rect x="36" y="47" width="14" height="8" rx="2" fill="#011d51" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+            <line x1="24" y1="62" x2="24" y2="70" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="43" y1="62" x2="43" y2="70" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="70" r="2" fill="#F5A623"/>
+            <circle cx="43" cy="70" r="2" fill="#F5A623"/>
+          </svg>
+          <div class="equip-photo-badge">Relay</div>
+        </div>
+        <div class="equip-info">
+          <div class="equip-name">Relay Test Kit</div>
+          <div class="equip-use">Protection relay calibration &amp; testing</div>
+        </div>
       </div>
+
+      <!-- ACB Secondary Current Injection Kit -->
       <div class="equip-card">
-        <div class="equip-photo"><div class="equip-photo-icon">⚡</div><div class="equip-photo-badge">ACB</div></div>
-        <div class="equip-info"><div class="equip-name">ACB Secondary Current Injection Kit</div><div class="equip-use">Breaker testing & verification</div></div>
+        <div class="equip-photo">
+          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="20" width="42" height="40" rx="4" fill="#1a4a9e" stroke="#F5A623" stroke-width="1.5"/>
+            <rect x="14" y="26" width="30" height="14" rx="2" fill="#011d51" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+            <polyline points="17,33 22,27 27,36 32,29 37,33 41,30" stroke="#F5A623" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="14" y="44" width="8" height="8" rx="1" fill="#F5A623" opacity="0.7"/>
+            <rect x="26" y="44" width="8" height="8" rx="1" fill="rgba(245,166,35,0.3)"/>
+            <rect x="38" y="44" width="8" height="8" rx="1" fill="rgba(245,166,35,0.3)"/>
+            <line x1="50" y1="30" x2="68" y2="22" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="68" y2="58" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="70" cy="22" r="3" fill="#F5A623"/>
+            <circle cx="70" cy="58" r="3" fill="#F5A623"/>
+          </svg>
+          <div class="equip-photo-badge">ACB</div>
+        </div>
+        <div class="equip-info">
+          <div class="equip-name">ACB Secondary Current Injection Kit</div>
+          <div class="equip-use">Breaker testing &amp; verification</div>
+        </div>
       </div>
+
+      <!-- Contact Resistance Measurement Kit -->
       <div class="equip-card">
-        <div class="equip-photo"><div class="equip-photo-icon">🔍</div><div class="equip-photo-badge">Resistance</div></div>
-        <div class="equip-info"><div class="equip-name">Contact Resistance Measurement Kit</div><div class="equip-use">Switchgear contact quality assessment</div></div>
+        <div class="equip-photo">
+          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15" y="20" width="50" height="32" rx="4" fill="#1a4a9e" stroke="#F5A623" stroke-width="1.5"/>
+            <rect x="21" y="26" width="22" height="20" rx="2" fill="#011d51" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+            <circle cx="32" cy="36" r="7" fill="#011d51" stroke="#F5A623" stroke-width="1.2"/>
+            <line x1="32" y1="30" x2="32" y2="42" stroke="rgba(245,166,35,0.4)" stroke-width="0.8"/>
+            <line x1="26" y1="36" x2="38" y2="36" stroke="rgba(245,166,35,0.4)" stroke-width="0.8"/>
+            <line x1="32" y1="33" x2="36" y2="36" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="47" y="27" width="12" height="7" rx="1" fill="#011d51" stroke="rgba(245,166,35,0.3)" stroke-width="0.8"/>
+            <rect x="47" y="37" width="12" height="7" rx="1" fill="#011d51" stroke="rgba(245,166,35,0.3)" stroke-width="0.8"/>
+            <line x1="25" y1="52" x2="25" y2="62" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="55" y1="52" x2="55" y2="62" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="25" cy="63" r="2" fill="#F5A623"/>
+            <circle cx="55" cy="63" r="2" fill="#F5A623"/>
+          </svg>
+          <div class="equip-photo-badge">Resistance</div>
+        </div>
+        <div class="equip-info">
+          <div class="equip-name">Contact Resistance Measurement Kit</div>
+          <div class="equip-use">Switchgear contact quality assessment</div>
+        </div>
       </div>
+
+      <!-- High Voltage Test Kit -->
       <div class="equip-card">
-        <div class="equip-photo"><div class="equip-photo-icon">🔴</div><div class="equip-photo-badge">HV</div></div>
-        <div class="equip-info"><div class="equip-name">High Voltage Test Kit</div><div class="equip-use">Insulation & dielectric strength testing</div></div>
+        <div class="equip-photo">
+          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="22" width="44" height="36" rx="4" fill="#1a4a9e" stroke="#F5A623" stroke-width="1.5"/>
+            <polygon points="32,28 26,40 31,40 28,52 42,36 36,36 40,28" fill="#F5A623"/>
+            <rect x="58" y="28" width="10" height="24" rx="3" fill="#1a4a9e" stroke="#F5A623" stroke-width="1"/>
+            <line x1="54" y1="35" x2="58" y2="35" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="54" y1="40" x2="58" y2="40" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="54" y1="45" x2="58" y2="45" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="32" y1="58" x2="32" y2="66" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="32" cy="68" r="2.5" fill="#F5A623"/>
+          </svg>
+          <div class="equip-photo-badge">HV</div>
+        </div>
+        <div class="equip-info">
+          <div class="equip-name">High Voltage Test Kit</div>
+          <div class="equip-use">Insulation &amp; dielectric strength testing</div>
+        </div>
       </div>
+
+      <!-- Earth Resistance Tester -->
       <div class="equip-card">
-        <div class="equip-photo"><div class="equip-photo-icon">🌍</div><div class="equip-photo-badge">Earth</div></div>
-        <div class="equip-info"><div class="equip-name">Earth Resistance Tester</div><div class="equip-use">Grounding system compliance & safety</div></div>
+        <div class="equip-photo">
+          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="16" width="40" height="36" rx="4" fill="#1a4a9e" stroke="#F5A623" stroke-width="1.5"/>
+            <rect x="18" y="22" width="28" height="18" rx="2" fill="#011d51" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+            <polyline points="20,31 25,25 30,34 35,27 40,31 44,28" stroke="#F5A623" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="43" r="3" fill="#F5A623" opacity="0.8"/>
+            <circle cx="32" cy="43" r="3" fill="rgba(245,166,35,0.3)"/>
+            <circle cx="42" cy="43" r="3" fill="rgba(245,166,35,0.3)"/>
+            <!-- Ground symbol -->
+            <line x1="32" y1="52" x2="32" y2="58" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="22" y1="60" x2="42" y2="60" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+            <line x1="25" y1="63" x2="39" y2="63" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="28" y1="66" x2="36" y2="66" stroke="#F5A623" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          <div class="equip-photo-badge">Earth</div>
+        </div>
+        <div class="equip-info">
+          <div class="equip-name">Earth Resistance Tester</div>
+          <div class="equip-use">Grounding system compliance &amp; safety</div>
+        </div>
       </div>
+
     </div>
+    <!-- Updated complete badge list from PDF -->
     <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;" class="fade-up">
       <span class="badge" style="background:#F5F7FA; border-color:#D8DDE2; color:#4A5A6A;">Multimeters</span>
       <span class="badge" style="background:#F5F7FA; border-color:#D8DDE2; color:#4A5A6A;">Calibration Equipment</span>
@@ -1223,12 +1300,12 @@
             <label>Service Required</label>
             <select id="cService">
               <option value="">Select a service...</option>
-              <option>Electrical Maintenance & AMC</option>
+              <option>Electrical Maintenance &amp; AMC</option>
               <option>Switchgear Services</option>
               <option>Transformer Reliability Solutions</option>
-              <option>Testing & Diagnostic Services</option>
-              <option>Control Panel & Automation</option>
-              <option>Earthing & Safety Solutions</option>
+              <option>Testing &amp; Diagnostic Services</option>
+              <option>Control Panel &amp; Automation</option>
+              <option>Earthing &amp; Safety Solutions</option>
               <option>24/7 Breakdown Support</option>
               <option>Other</option>
             </select>
@@ -1273,29 +1350,17 @@
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-  // Close nav on link click
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
   // Scroll-to-top button
   const scrollBtn = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => {
-    scrollBtn.classList.toggle('visible', window.scrollY > 400);
-  });
+  window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 400));
 
   // Intersection Observer for fade animations
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.12 });
-
   document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
 
   // Staggered animation for grid children
@@ -1310,11 +1375,8 @@
       }
     });
   }, { threshold: 0.05 });
-
   document.querySelectorAll('.why-grid, .solutions-grid, .ind-grid, .equip-grid, .tech-grid').forEach(el => {
-    el.querySelectorAll('.why-card, .sol-card, .ind-card, .equip-card, .tech-card').forEach(card => {
-      card.classList.add('fade-up');
-    });
+    el.querySelectorAll('.why-card, .sol-card, .ind-card, .equip-card, .tech-card').forEach(card => card.classList.add('fade-up'));
     staggerObserver.observe(el);
   });
 
@@ -1325,9 +1387,7 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
-        navAnchors.forEach(a => {
-          a.style.color = a.getAttribute('href') === `#${id}` ? 'var(--amber)' : '';
-        });
+        navAnchors.forEach(a => a.style.color = a.getAttribute('href') === `#${id}` ? 'var(--amber)' : '');
       }
     });
   }, { threshold: 0.35 });
@@ -1363,23 +1423,15 @@
   function handleFormSubmit() {
     const name = document.getElementById('cName').value;
     const email = document.getElementById('cEmail').value;
-    const msg = document.getElementById('cMessage').value;
-    if (!name || !email) {
-      alert('Please fill in your name and email.');
-      return;
-    }
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
     const notif = document.getElementById('notification');
     notif.classList.add('show');
     setTimeout(() => notif.classList.remove('show'), 4000);
-    // Clear form
     ['cName','cCompany','cPhone','cEmail','cMessage'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('cService').selectedIndex = 0;
   }
 
-  // Keyboard ESC closes mobile nav
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') navLinks.classList.remove('open');
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') navLinks.classList.remove('open'); });
 
   // Smooth reveal for hero on load
   document.addEventListener('DOMContentLoaded', () => {
@@ -1388,20 +1440,14 @@
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = `opacity 0.7s ease ${i * 0.12}s, transform 0.7s ease ${i * 0.12}s`;
-      setTimeout(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }, 100 + i * 120);
+      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 100 + i * 120);
     });
     const heroCards = document.querySelectorAll('.service-card');
     heroCards.forEach((card, i) => {
       card.style.opacity = '0';
       card.style.transform = 'translateX(20px)';
       card.style.transition = `opacity 0.6s ease ${0.4 + i * 0.1}s, transform 0.6s ease ${0.4 + i * 0.1}s`;
-      setTimeout(() => {
-        card.style.opacity = '1';
-        card.style.transform = 'translateX(0)';
-      }, 100);
+      setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateX(0)'; }, 100);
     });
   });
 </script>
