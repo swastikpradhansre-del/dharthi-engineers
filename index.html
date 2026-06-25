@@ -11,8 +11,8 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Calibri', 'Inter', sans-serif;
-      background: #ffffff;  /* WHITE BACKGROUND */
-      color: #011d51;       /* DARK BLUE TEXT on white */
+      background: #ffffff;  /* WHITE BACKGROUND for perfect logo alignment */
+      color: #011d51;       /* navy text on white sections */
       overflow-x: hidden;
       font-weight: 400;
       line-height: 1.6;
@@ -22,27 +22,29 @@
       font-weight: 700;
       letter-spacing: -0.01em;
     }
-    /* ── ALL SECTIONS WHITE BACKGROUND ── */
-    section, .hero, #founder, #deliver, #international, #contact, #values {
+    /* ── all sections except hero & dark ones keep white bg ── */
+    section:not(.hero):not(#founder):not(#deliver):not(#international):not(#contact):not(#values) {
       background: #ffffff;
     }
-    /* but we keep dark sections with blue text on white */
-    #founder, #deliver, #international, #contact, #values {
+    #about, #vision, #why, #solutions, #industries, #technical, #breakdown, #equipment, #clients {
       background: #ffffff;
     }
-    /* override any dark backgrounds */
-    .hero { background: #ffffff; }
-    #deliver { background: #ffffff; }
-    #international { background: #ffffff; }
-    #values { background: #ffffff; }
-    #founder { background: #ffffff; }
-    #contact { background: #ffffff; }
+    /* dark sections keep their navy/dark backgrounds */
+    .hero, #founder, #deliver, #international, #contact, #values {
+      background: #011d51; /* navy */
+    }
+    #deliver { background: #011d51; }
+    #international { background: #01113a; }
+    #values { background: #011d51; }
+    #founder { background: #011d51; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      background: #ffffff;
-      border-bottom: 2px solid #e8edf2;
+      background: #ffffff;  /* WHITE NAV BACKGROUND */
+      backdrop-filter: none; /* removed blur for clean white */
+      border-bottom: 2px solid #e8edf2; /* subtle grey border instead of white */
+      transition: all 0.3s ease;
       box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     }
     .nav-inner {
@@ -54,9 +56,10 @@
       display: flex;
       align-items: center;
       padding: 6px 12px;
-      background: transparent;
+      background: transparent; /* clean white, no background */
       border: none;
       border-radius: 0;
+      backdrop-filter: none;
       text-decoration: none;
       gap: 10px;
     }
@@ -73,18 +76,27 @@
       width: auto;
       display: block;
       object-fit: contain;
-      filter: none;
+      filter: none; /* keep original logo colors */
     }
     .nav-logo-text {
-      color: #011d51;
+      color: #011d51; /* navy text on white */
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 2px;
     }
+    .nav-logo-text span {
+      font-family: 'Calibri', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: block;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      color: #011d51;
+    }
     .nav-links { display: flex; gap: 0.25rem; align-items: center; }
     .nav-links a {
-      color: #4a5c6e;
+      color: #4a5c6e; /* grey-mid on white */
       text-decoration: none;
       padding: 0.4rem 0.75rem;
       border-radius: 4px;
@@ -99,6 +111,7 @@
       padding: 0.4rem 1.1rem !important;
       border-radius: 4px;
       font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
     }
     .nav-cta:hover { background: #1a3a7a !important; color: #ffffff !important; }
     .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
@@ -118,33 +131,34 @@
       .nav-logo-text span { font-size: 0.95rem; }
       .nav-logo-icon img { height: 36px; }
       .nav-links a { color: #011d51; }
+      .nav-links a:hover { background: #f0f2f5; }
     }
 
-    /* ── HERO ── (white bg, blue text) */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh; position: relative; overflow: hidden;
-      background: #ffffff;
+      background: #011d51;
       display: flex; align-items: center;
     }
     .hero-bg-grid {
       position: absolute; inset: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(1,29,81,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(1,29,81,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
     }
     .hero-bg-glow {
       position: absolute; pointer-events: none;
-      border-radius: 50%; filter: blur(90px); opacity: 0.06;
+      border-radius: 50%; filter: blur(90px); opacity: 0.12;
     }
     .hero-bg-glow.g1 {
       width: 600px; height: 600px;
-      background: radial-gradient(circle, #011d51, transparent);
+      background: radial-gradient(circle, #ffffff, transparent);
       top: -200px; right: -100px;
     }
     .hero-bg-glow.g2 {
       width: 500px; height: 500px;
-      background: radial-gradient(circle, #011d51, transparent);
+      background: radial-gradient(circle, #8a99aa, transparent);
       bottom: -150px; left: -100px;
     }
     .power-line {
@@ -153,7 +167,7 @@
     }
     .power-line svg { width: 100%; height: 100%; }
     .bolt-path {
-      stroke: #011d51; stroke-width: 1.5; fill: none; opacity: 0.08;
+      stroke: #ffffff; stroke-width: 1.5; fill: none; opacity: 0.15;
       stroke-dasharray: 1200; stroke-dashoffset: 1200;
       animation: drawLine 3s ease forwards 0.5s;
     }
@@ -166,79 +180,79 @@
     @media(max-width:900px) { .hero-content { grid-template-columns: 1fr; gap: 2rem; padding-top: 100px; } }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(1,29,81,0.06); border: 1px solid rgba(1,29,81,0.15);
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25);
       border-radius: 100px; padding: 5px 14px;
-      color: #011d51; font-size: 0.75rem; font-weight: 600;
+      color: #ffffff; font-size: 0.75rem; font-weight: 600;
       letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
     }
     .hero-eyebrow::before { content: '⚡'; }
     .hero-pdf-tagline {
-      font-size: 1.05rem; color: #4a5c6e;
+      font-size: 1.05rem; color: rgba(255,255,255,0.55);
       letter-spacing: 0.06em; margin-bottom: 1.2rem;
       text-transform: uppercase; font-weight: 400;
     }
-    .hero-pdf-tagline strong { color: #011d51; font-weight: 700; }
+    .hero-pdf-tagline strong { color: #ffffff; font-weight: 700; }
     .hero-title {
       font-family: 'Calibri', sans-serif;
       font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 900; color: #011d51; line-height: 1.1;
+      font-weight: 900; color: white; line-height: 1.1;
       margin-bottom: 1.25rem;
     }
-    .hero-title .accent { color: #011d51; border-bottom: 3px solid rgba(1,29,81,0.2); }
+    .hero-title .accent { color: #ffffff; border-bottom: 3px solid rgba(255,255,255,0.3); }
     .hero-tagline {
-      font-size: 1rem; color: #4a5c6e;
+      font-size: 1rem; color: rgba(255,255,255,0.6);
       line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px;
       font-weight: 300;
     }
-    .hero-tagline strong { color: #011d51; font-weight: 500; }
+    .hero-tagline strong { color: rgba(255,255,255,0.85); font-weight: 500; }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
-      background: #011d51; color: #ffffff;
+      background: #ffffff; color: #011d51;
       padding: 0.85rem 2rem; border-radius: 6px;
       font-weight: 700; font-size: 0.9rem; text-decoration: none;
       letter-spacing: 0.04em; transition: all 0.25s;
-      box-shadow: 0 4px 20px rgba(1,29,81,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-primary:hover { background: #1a3a7a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(1,29,81,0.2); }
+    .btn-primary:hover { background: #e8edf2; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
     .btn-secondary {
-      border: 1.5px solid rgba(1,29,81,0.25); color: #011d51;
+      border: 1.5px solid rgba(255,255,255,0.35); color: white;
       padding: 0.85rem 2rem; border-radius: 6px;
       font-weight: 500; font-size: 0.9rem; text-decoration: none;
       letter-spacing: 0.03em; transition: all 0.25s;
       display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-secondary:hover { border-color: #011d51; color: #011d51; background: rgba(1,29,81,0.03); }
+    .btn-secondary:hover { border-color: #ffffff; color: #ffffff; background: rgba(255,255,255,0.05); }
     .hero-stats {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-      background: rgba(1,29,81,0.06);
-      border: 1px solid rgba(1,29,81,0.08);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px; overflow: hidden; margin-top: 3rem;
     }
-    .stat-item { padding: 1.5rem; background: rgba(255,255,255,0.8); text-align: center; }
+    .stat-item { padding: 1.5rem; background: rgba(1,29,81,0.5); text-align: center; }
     .stat-num {
       font-family: 'Calibri', sans-serif;
-      font-size: 2.2rem; font-weight: 900; color: #011d51;
+      font-size: 2.2rem; font-weight: 900; color: #ffffff;
       line-height: 1; margin-bottom: 4px;
     }
-    .stat-label { font-size: 0.72rem; color: #4a5c6e; letter-spacing: 0.06em; text-transform: uppercase; }
+    .stat-label { font-size: 0.72rem; color: #8a99aa; letter-spacing: 0.06em; text-transform: uppercase; }
     .hero-right { display: flex; flex-direction: column; gap: 1rem; }
     @media(max-width:900px) { .hero-right { display: none; } }
     .service-card {
-      background: rgba(1,29,81,0.02);
-      border: 1px solid rgba(1,29,81,0.06);
-      border-left: 3px solid #011d51;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid #ffffff;
       border-radius: 8px; padding: 1rem 1.25rem;
       display: flex; align-items: center; gap: 1rem;
       transition: all 0.3s;
     }
-    .service-card:hover { background: rgba(1,29,81,0.04); transform: translateX(6px); }
+    .service-card:hover { background: rgba(255,255,255,0.08); transform: translateX(6px); }
     .service-card-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .service-card-title { color: #011d51; font-weight: 600; font-size: 0.88rem; }
-    .service-card-desc { color: #4a5c6e; font-size: 0.75rem; margin-top: 2px; }
+    .service-card-title { color: white; font-weight: 600; font-size: 0.88rem; }
+    .service-card-desc { color: rgba(255,255,255,0.45); font-size: 0.75rem; margin-top: 2px; }
 
     /* ── SECTION COMMON ── */
-    section { padding: 6rem 0; background: #ffffff; }
+    section { padding: 6rem 0; }
     .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
     .section-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
@@ -251,11 +265,11 @@
       font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
       color: #011d51; line-height: 1.2; margin-bottom: 1rem;
     }
-    .section-title.light { color: #011d51; }
+    .section-title.light { color: white; }
     .section-lead { font-size: 1.05rem; color: #4a5c6e; line-height: 1.75; max-width: 640px; }
-    .section-lead.light { color: #4a5c6e; }
+    .section-lead.light { color: rgba(255,255,255,0.65); }
     .divider { width: 60px; height: 3px; background: #011d51; margin-bottom: 1.5rem; }
-    .divider.light { background: #011d51; }
+    .divider.light { background: #ffffff; }
 
     /* ── ABOUT ── */
     #about { background: #ffffff; }
@@ -263,28 +277,27 @@
     @media(max-width:900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
     .about-visual {
       position: relative; aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #e8edf2, #d5dce5);
+      background: linear-gradient(135deg, #011d51, #01113a);
       border-radius: 12px; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(1,29,81,0.08);
     }
     .about-visual-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(1,29,81,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(1,29,81,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
       background-size: 30px 30px;
     }
     .about-circuit { position: relative; z-index: 2; text-align: center; padding: 2rem; }
-    .about-circuit-icon { font-size: 5rem; margin-bottom: 1rem; opacity: 0.6; }
+    .about-circuit-icon { font-size: 5rem; margin-bottom: 1rem; opacity: 0.7; }
     .about-circuit-text {
       font-family: 'Calibri', sans-serif;
-      font-size: 1.1rem; color: #4a5c6e; line-height: 1.6;
+      font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.6;
     }
-    .about-circuit-text strong { color: #011d51; font-size: 2rem; display: block; margin-bottom: 4px; }
+    .about-circuit-text strong { color: #ffffff; font-size: 2rem; display: block; margin-bottom: 4px; }
     .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
     .badge {
-      background: rgba(1,29,81,0.06); border: 1px solid rgba(1,29,81,0.1);
+      background: rgba(1,29,81,0.08); border: 1px solid rgba(1,29,81,0.15);
       color: #011d51; font-size: 0.78rem; font-weight: 600;
       padding: 6px 14px; border-radius: 100px; letter-spacing: 0.03em;
     }
@@ -292,41 +305,42 @@
     .about-list li {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 1rem 1.25rem;
-      background: #f8f9fc; border-radius: 8px;
+      background: #ffffff; border-radius: 8px;
       border-left: 3px solid #011d51;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
     .about-list li::before { content: '✦'; color: #011d51; font-size: 0.75rem; margin-top: 3px; flex-shrink: 0; }
     .about-list li span { font-size: 0.9rem; color: #4a5c6e; line-height: 1.6; }
 
     /* ── FOUNDER ── */
-    #founder { background: #ffffff; }
+    #founder { background: #011d51; }
     .founder-grid { display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: start; }
     @media(max-width:900px) { .founder-grid { grid-template-columns: 1fr; gap: 2rem; } }
     .founder-photo {
       width: 240px; height: 300px;
-      background: linear-gradient(145deg, #e8edf2, #d5dce5);
+      background: linear-gradient(145deg, #01113a, #010e28);
       border-radius: 12px; overflow: hidden;
-      border: 2px solid rgba(1,29,81,0.1);
+      border: 2px solid rgba(255,255,255,0.15);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       gap: 12px; flex-shrink: 0;
     }
     @media(max-width:900px) { .founder-photo { width: 100%; height: 220px; } }
-    .founder-photo-icon { font-size: 5rem; opacity: 0.3; color: #011d51; }
-    .founder-photo-label { color: #4a5c6e; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .founder-photo-icon { font-size: 5rem; opacity: 0.4; }
+    .founder-photo-label { color: rgba(255,255,255,0.3); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
     .founder-quote {
       position: relative; padding: 2.5rem 2.5rem 2rem;
-      background: #f8f9fc;
-      border: 1px solid rgba(1,29,81,0.06);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 12px;
     }
     .founder-quote::before {
       content: '\201C'; position: absolute; top: -20px; left: 20px;
       font-family: 'Calibri', sans-serif; font-size: 6rem;
-      color: #011d51; opacity: 0.08; line-height: 1;
+      color: #ffffff; opacity: 0.15; line-height: 1;
     }
-    .founder-quote p { color: #4a5c6e; font-size: 1.02rem; line-height: 1.85; font-style: italic; margin-bottom: 1.5rem; }
-    .founder-name { font-family: 'Calibri', sans-serif; font-size: 1.2rem; color: #011d51; font-weight: 700; }
-    .founder-title { color: #4a5c6e; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+    .founder-quote p { color: rgba(255,255,255,0.75); font-size: 1.02rem; line-height: 1.85; font-style: italic; margin-bottom: 1.5rem; }
+    .founder-name { font-family: 'Calibri', sans-serif; font-size: 1.2rem; color: white; font-weight: 700; }
+    .founder-title { color: #8a99aa; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
 
     /* ── VISION MISSION ── */
     #vision { background: #ffffff; }
@@ -344,26 +358,25 @@
     @media(max-width:600px) { .why-grid { grid-template-columns: 1fr; } }
     .why-card {
       background: #ffffff; padding: 2rem; border-radius: 10px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
       border-top: 3px solid transparent;
       transition: all 0.3s;
-      border: 1px solid rgba(1,29,81,0.04);
     }
-    .why-card:hover { border-top-color: #011d51; transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+    .why-card:hover { border-top-color: #011d51; transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
     .why-icon { font-size: 2rem; margin-bottom: 1rem; }
     .why-title { font-weight: 700; font-size: 0.95rem; color: #011d51; margin-bottom: 0.5rem; }
     .why-desc { font-size: 0.85rem; color: #4a5c6e; line-height: 1.7; }
 
     /* ── WHAT WE DELIVER ── */
-    #deliver { background: #ffffff; }
-    .deliver-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(1,29,81,0.04); border: 1px solid rgba(1,29,81,0.06); border-radius: 12px; overflow: hidden; margin-top: 3rem; }
+    #deliver { background: #011d51; }
+    .deliver-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: 3rem; }
     @media(max-width:900px) { .deliver-grid { grid-template-columns: 1fr 1fr; } }
     @media(max-width:500px) { .deliver-grid { grid-template-columns: 1fr; } }
-    .deliver-item { padding: 2.5rem 1.5rem; text-align: center; background: #fafbfc; transition: background 0.3s; }
-    .deliver-item:hover { background: rgba(1,29,81,0.02); }
+    .deliver-item { padding: 2.5rem 1.5rem; text-align: center; background: rgba(1,29,81,0.6); transition: background 0.3s; }
+    .deliver-item:hover { background: rgba(255,255,255,0.06); }
     .deliver-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-    .deliver-title { color: #011d51; font-weight: 600; font-size: 0.88rem; line-height: 1.4; }
-    .deliver-bar { width: 30px; height: 2px; background: #011d51; margin: 10px auto 0; opacity: 0.3; }
+    .deliver-title { color: white; font-weight: 600; font-size: 0.88rem; line-height: 1.4; }
+    .deliver-bar { width: 30px; height: 2px; background: #ffffff; margin: 10px auto 0; opacity: 0.5; }
 
     /* ── SOLUTIONS ── */
     #solutions { background: #ffffff; }
@@ -371,9 +384,9 @@
     @media(max-width:900px) { .solutions-grid { grid-template-columns: 1fr 1fr; } }
     @media(max-width:600px) { .solutions-grid { grid-template-columns: 1fr; } }
     .sol-card { border: 1px solid #e8edf2; border-radius: 12px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s; background: #ffffff; }
-    .sol-card:hover { border-color: #011d51; box-shadow: 0 8px 30px rgba(0,0,0,0.04); transform: translateY(-4px); }
+    .sol-card:hover { border-color: #011d51; box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-4px); }
     .sol-card:hover .sol-arrow { transform: translateX(4px); color: #011d51; }
-    .sol-icon-wrap { width: 54px; height: 54px; border-radius: 10px; background: #011d51; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.25rem; color: #ffffff; }
+    .sol-icon-wrap { width: 54px; height: 54px; border-radius: 10px; background: linear-gradient(135deg, #011d51, #01113a); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.25rem; }
     .sol-title { font-weight: 700; font-size: 1rem; color: #011d51; margin-bottom: 0.75rem; }
     .sol-desc { font-size: 0.83rem; color: #4a5c6e; line-height: 1.75; }
     .sol-arrow { display: inline-block; margin-top: 1rem; color: #8a99aa; font-size: 1.1rem; transition: all 0.25s; }
@@ -384,28 +397,28 @@
     @media(max-width:900px) { .ind-grid { grid-template-columns: repeat(3, 1fr); } }
     @media(max-width:500px) { .ind-grid { grid-template-columns: repeat(2, 1fr); } }
     .ind-card { background: #ffffff; border-radius: 10px; padding: 1.75rem 1rem; text-align: center; border: 1px solid #e8edf2; transition: all 0.3s; cursor: default; }
-    .ind-card:hover { border-color: #011d51; box-shadow: 0 6px 20px rgba(0,0,0,0.04); transform: translateY(-3px); }
+    .ind-card:hover { border-color: #011d51; box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-3px); }
     .ind-icon { font-size: 2rem; margin-bottom: 0.75rem; }
     .ind-label { font-size: 0.8rem; font-weight: 600; color: #011d51; line-height: 1.4; }
 
     /* ── INTERNATIONAL ── */
-    #international { background: #ffffff; }
+    #international { background: #01113a; }
     .intl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
     @media(max-width:700px) { .intl-grid { grid-template-columns: 1fr; } }
-    .intl-card { background: #f8f9fc; border: 1px solid rgba(1,29,81,0.06); border-radius: 12px; padding: 2.5rem; }
-    .intl-card:hover { background: #f0f2f5; }
+    .intl-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.5rem; }
+    .intl-card:hover { background: rgba(255,255,255,0.07); }
     .intl-flag { font-size: 3rem; margin-bottom: 1rem; }
-    .intl-country { font-family: 'Calibri', sans-serif; font-size: 1.6rem; color: #011d51; font-weight: 700; margin-bottom: 0.5rem; }
-    .intl-project { color: #4a5c6e; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
-    .intl-desc { color: #4a5c6e; font-size: 0.9rem; line-height: 1.8; }
-    .intl-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(1,29,81,0.04); border: 1px solid rgba(1,29,81,0.08); color: #011d51; font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-top: 1.25rem; margin-right: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .intl-country { font-family: 'Calibri', sans-serif; font-size: 1.6rem; color: white; font-weight: 700; margin-bottom: 0.5rem; }
+    .intl-project { color: #8a99aa; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .intl-desc { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.8; }
+    .intl-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #ffffff; font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-top: 1.25rem; margin-right: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
 
     /* ── TECHNICAL ── */
     #technical { background: #ffffff; }
     .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
     @media(max-width:700px) { .tech-grid { grid-template-columns: 1fr; } }
     .tech-card { text-align: center; padding: 2.5rem 2rem; border: 1px solid #e8edf2; border-radius: 12px; transition: all 0.3s; background: #ffffff; }
-    .tech-card:hover { border-color: #011d51; box-shadow: 0 6px 24px rgba(1,29,81,0.04); }
+    .tech-card:hover { border-color: #011d51; box-shadow: 0 6px 24px rgba(1,29,81,0.06); }
     .tech-icon { font-size: 3rem; margin-bottom: 1.25rem; }
     .tech-title { font-weight: 700; font-size: 1.05rem; color: #011d51; margin-bottom: 0.75rem; }
     .tech-desc { font-size: 0.85rem; color: #4a5c6e; line-height: 1.75; }
@@ -418,8 +431,8 @@
     .breakdown-text { color: #4a5c6e; font-size: 1rem; line-height: 1.75; max-width: 680px; }
     .breakdown-highlights { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
     .breakdown-hl { display: flex; align-items: center; gap: 8px; }
-    .breakdown-hl-dot { width: 8px; height: 8px; border-radius: 50%; background: #011d51; opacity: 0.4; }
-    .breakdown-hl-text { font-size: 0.88rem; font-weight: 600; color: #011d51; opacity: 0.7; }
+    .breakdown-hl-dot { width: 8px; height: 8px; border-radius: 50%; background: #011d51; opacity: 0.5; }
+    .breakdown-hl-text { font-size: 0.88rem; font-weight: 600; color: #011d51; opacity: 0.75; }
 
     /* ── EQUIPMENT ── */
     #equipment { background: #ffffff; }
@@ -427,10 +440,10 @@
     @media(max-width:900px) { .equip-grid { grid-template-columns: 1fr 1fr; } }
     @media(max-width:500px) { .equip-grid { grid-template-columns: 1fr; } }
     .equip-card { background: #ffffff; border-radius: 10px; overflow: hidden; border: 1px solid #e8edf2; transition: all 0.3s; }
-    .equip-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.04); transform: translateY(-3px); border-color: #011d51; }
-    .equip-photo { height: 140px; background: linear-gradient(135deg, #e8edf2, #d5dce5); display: flex; align-items: center; justify-content: center; position: relative; }
-    .equip-svg { width: 80px; height: 80px; opacity: 0.7; }
-    .equip-photo-badge { position: absolute; top: 10px; right: 10px; background: rgba(1,29,81,0.08); border: 1px solid rgba(1,29,81,0.1); color: #011d51; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .equip-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-3px); border-color: #011d51; }
+    .equip-photo { height: 140px; background: linear-gradient(135deg, #011d51, #01113a); display: flex; align-items: center; justify-content: center; position: relative; }
+    .equip-svg { width: 80px; height: 80px; opacity: 0.85; }
+    .equip-photo-badge { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); color: #ffffff; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; letter-spacing: 0.08em; text-transform: uppercase; }
     .equip-info { padding: 1.25rem; }
     .equip-name { font-weight: 700; font-size: 0.9rem; color: #011d51; margin-bottom: 4px; }
     .equip-use { font-size: 0.78rem; color: #4a5c6e; }
@@ -444,61 +457,52 @@
     .clients-track { display: flex; gap: 0; width: max-content; animation: marquee 30s linear infinite; }
     .clients-track:hover { animation-play-state: paused; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .client-chip { display: flex; align-items: center; gap: 8px; padding: 0.75rem 1.75rem; margin: 0 0.5rem; background: #f8f9fc; border: 1px solid #e8edf2; border-radius: 8px; white-space: nowrap; }
+    .client-chip { display: flex; align-items: center; gap: 8px; padding: 0.75rem 1.75rem; margin: 0 0.5rem; background: #f5f7fa; border: 1px solid #e8edf2; border-radius: 8px; white-space: nowrap; }
     .client-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: #011d51; }
     .client-chip-name { font-weight: 600; font-size: 0.85rem; color: #011d51; }
-    .client-note { text-align: center; margin-top: 2rem; color: #4a5c6e; font-size: 0.85rem; }
+    .client-note { text-align: center; margin-top: 2rem; color: #8a99aa; font-size: 0.85rem; }
 
     /* ── CONTACT ── */
-    #contact { background: #ffffff; }
+    #contact { background: #011d51; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
     @media(max-width:900px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
     .contact-items { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
-    .contact-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.5rem; background: #f8f9fc; border: 1px solid rgba(1,29,81,0.06); border-radius: 10px; transition: background 0.25s; }
-    .contact-item:hover { background: #f0f2f5; }
-    .contact-item-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(1,29,81,0.04); border: 1px solid rgba(1,29,81,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; color: #011d51; }
-    .contact-item-label { color: #4a5c6e; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
-    .contact-item-value { color: #011d51; font-size: 0.95rem; font-weight: 500; text-decoration: none; }
-    .contact-item-value:hover { color: #011d51; text-decoration: underline; }
-    .contact-form { background: #f8f9fc; border: 1px solid rgba(1,29,81,0.06); border-radius: 12px; padding: 2.5rem; }
-    .contact-form h3 { font-family: 'Calibri', sans-serif; color: #011d51; font-size: 1.3rem; margin-bottom: 1.5rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.5rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; transition: background 0.25s; }
+    .contact-item:hover { background: rgba(255,255,255,0.07); }
+    .contact-item-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .contact-item-label { color: #8a99aa; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+    .contact-item-value { color: white; font-size: 0.95rem; font-weight: 500; text-decoration: none; }
+    .contact-item-value:hover { color: #ffffff; text-decoration: underline; }
+    .contact-form { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2.5rem; }
+    .contact-form h3 { font-family: 'Calibri', sans-serif; color: white; font-size: 1.3rem; margin-bottom: 1.5rem; }
     .form-group { margin-bottom: 1.25rem; }
-    .form-group label { display: block; color: #4a5c6e; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; background: #ffffff; border: 1px solid #e8edf2; border-radius: 6px; padding: 0.75rem 1rem; color: #011d51; font-size: 0.9rem; font-family: 'Calibri', sans-serif; outline: none; transition: border 0.25s; }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: #8a99aa; }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #011d51; }
+    .form-group label { display: block; color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 0.75rem 1rem; color: white; font-size: 0.9rem; font-family: 'Calibri', sans-serif; outline: none; transition: border 0.25s; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #ffffff; }
     .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-group select option { background: #ffffff; color: #011d51; }
+    .form-group select option { background: #011d51; color: white; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media(max-width:500px) { .form-row { grid-template-columns: 1fr; } }
-    .form-submit { width: 100%; background: #011d51; color: #ffffff; border: none; padding: 0.9rem; border-radius: 6px; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: 'Calibri', sans-serif; letter-spacing: 0.04em; transition: all 0.25s; }
-    .form-submit:hover { background: #1a3a7a; transform: translateY(-1px); }
+    .form-submit { width: 100%; background: #ffffff; color: #011d51; border: none; padding: 0.9rem; border-radius: 6px; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: 'Calibri', sans-serif; letter-spacing: 0.04em; transition: all 0.25s; }
+    .form-submit:hover { background: #e8edf2; transform: translateY(-1px); }
 
     /* ── FOOTER ── */
-    footer { background: #f8f9fc; border-top: 1px solid #e8edf2; padding: 2rem 0; }
+    footer { background: #010e28; border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 0; }
     .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-left { display: flex; align-items: center; gap: 12px; }
     .footer-logo-wrap { display: flex; align-items: center; justify-content: center; border-radius: 4px; overflow: hidden; }
-    .footer-logo-wrap img { height: 34px; filter: none; width: auto; display: block; object-fit: contain; }
-    .footer-name { font-family: 'Calibri', sans-serif; color: #011d51; font-size: 1rem; font-weight: 700; }
-    .footer-copy { color: #4a5c6e; font-size: 0.78rem; margin-top: 2px; }
-    .footer-right { color: #4a5c6e; font-size: 0.78rem; text-align: right; }
-    .footer-right a { color: #011d51; text-decoration: none; }
+    .footer-logo-wrap img { height: 34px; filter: brightness(0) invert(1); width: auto; display: block; object-fit: contain; }
+    .footer-name { font-family: 'Calibri', sans-serif; color: white; font-size: 1rem; font-weight: 700; }
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.78rem; margin-top: 2px; }
+    .footer-right { color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: right; }
 
     /* ── SCROLL TOP ── */
-    #scrollTop { position: fixed; bottom: 2rem; right: 2rem; z-index: 900; width: 46px; height: 46px; border-radius: 8px; background: #011d51; color: #ffffff; border: 1px solid rgba(1,29,81,0.1); cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    #scrollTop { position: fixed; bottom: 2rem; right: 2rem; z-index: 900; width: 46px; height: 46px; border-radius: 8px; background: #011d51; color: #ffffff; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
     #scrollTop.visible { opacity: 1; pointer-events: auto; }
-    #scrollTop:hover { background: #1a3a7a; transform: translateY(-3px); }
+    #scrollTop:hover { background: #ffffff; color: #011d51; transform: translateY(-3px); }
 
     /* ── VALUE PILLARS ── */
-    #values { background: #ffffff; }
-    #values > .section-inner > div { background: #f8f9fc; border: 1px solid rgba(1,29,81,0.06); border-radius: 12px; overflow: hidden; }
-    #values .pillar { background: #ffffff; transition: background 0.3s; padding: 2.5rem 2rem; text-align: center; }
-    #values .pillar:hover { background: #f0f2f5; }
-    .pillar-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(1,29,81,0.04); border: 1.5px solid rgba(1,29,81,0.08); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.4rem; color: #011d51; }
-    .pillar-label { color: #011d51; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .pillar-desc { color: #4a5c6e; font-size: 0.85rem; line-height: 1.7; }
-
     @media(max-width:700px) { #values > .section-inner > div { grid-template-columns: 1fr 1fr !important; } }
     @media(max-width:400px) { #values > .section-inner > div { grid-template-columns: 1fr !important; } }
 
@@ -509,9 +513,9 @@
     .fade-in.visible { opacity: 1; }
 
     /* ── NOTIFICATION ── */
-    #notification { position: fixed; bottom: 5rem; right: 2rem; z-index: 1000; background: #011d51; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem 1.5rem; max-width: 300px; transform: translateX(120%); transition: transform 0.4s ease; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+    #notification { position: fixed; bottom: 5rem; right: 2rem; z-index: 1000; background: #011d51; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.5rem; max-width: 300px; transform: translateX(120%); transition: transform 0.4s ease; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
     #notification.show { transform: translateX(0); }
-    #notification p { color: #ffffff; font-size: 0.85rem; }
+    #notification p { color: white; font-size: 0.85rem; }
     #notification strong { color: #ffffff; }
   </style>
 </head>
@@ -668,7 +672,7 @@
 <section id="founder">
   <div class="section-inner">
     <div style="text-align:center; margin-bottom:3rem;" class="fade-up">
-      <div class="section-eyebrow" style="justify-content:center;">Founder's Message</div>
+      <div class="section-eyebrow" style="color:rgba(255,255,255,0.5); justify-content:center;">Founder's Message</div>
       <div class="divider light" style="margin:0 auto 0;"></div>
     </div>
     <div class="founder-grid fade-up">
@@ -864,10 +868,10 @@
 <section id="international">
   <div class="section-inner">
     <div class="fade-up">
-      <div class="section-eyebrow">Global Footprint</div>
-      <div class="divider"></div>
-      <h2 class="section-title">International Project Experience</h2>
-      <p class="section-lead">Delivering engineering excellence beyond borders, meeting international standards and client expectations.</p>
+      <div class="section-eyebrow" style="color:rgba(255,255,255,0.5);">Global Footprint</div>
+      <div class="divider light"></div>
+      <h2 class="section-title light">International Project Experience</h2>
+      <p class="section-lead light">Delivering engineering excellence beyond borders, meeting international standards and client expectations.</p>
     </div>
     <div class="intl-grid fade-up">
       <div class="intl-card">
@@ -935,7 +939,7 @@
           <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">Minimal Production Loss</div></div>
           <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">All Major Makes &amp; Models</div></div>
         </div>
-        <a href="tel:+919972595963" class="btn-primary" style="margin-top:2rem;">📞 Call Now: +91 99725 95963</a>
+        <a href="tel:+919972595963" class="btn-primary" style="margin-top:2rem; background:#011d51; color:white; box-shadow:0 4px 20px rgba(1,29,81,0.2);">📞 Call Now: +91 99725 95963</a>
       </div>
     </div>
   </div>
@@ -954,15 +958,15 @@
       <div class="equip-card">
         <div class="equip-photo">
           <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="22" width="50" height="36" rx="5" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <circle cx="35" cy="40" r="11" fill="#ffffff" stroke="#011d51" stroke-width="1.2"/>
-            <circle cx="35" cy="40" r="6" fill="#ffffff" stroke="rgba(1,29,81,0.2)" stroke-width="1"/>
-            <circle cx="35" cy="40" r="2.5" fill="#011d51"/>
-            <rect x="60" y="30" width="10" height="20" rx="3" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <rect x="15" y="27" width="8" height="5" rx="1" fill="#011d51" opacity="0.3"/>
-            <line x1="22" y1="22" x2="22" y2="16" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="30" y1="22" x2="30" y2="14" stroke="#011d51" stroke-width="2" stroke-linecap="round"/>
-            <line x1="38" y1="22" x2="38" y2="16" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="10" y="22" width="50" height="36" rx="5" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
+            <circle cx="35" cy="40" r="11" fill="#011d51" stroke="#ffffff" stroke-width="1.5"/>
+            <circle cx="35" cy="40" r="6" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="35" cy="40" r="2.5" fill="#ffffff"/>
+            <rect x="60" y="30" width="10" height="20" rx="3" fill="#1a4a9e" stroke="#ffffff" stroke-width="1"/>
+            <rect x="15" y="27" width="8" height="5" rx="1" fill="#ffffff" opacity="0.4"/>
+            <line x1="22" y1="22" x2="22" y2="16" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="30" y1="22" x2="30" y2="14" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <line x1="38" y1="22" x2="38" y2="16" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
           <div class="equip-photo-badge">Thermal</div>
         </div>
@@ -971,14 +975,14 @@
       <div class="equip-card">
         <div class="equip-photo">
           <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="18" width="44" height="44" rx="4" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <rect x="18" y="24" width="32" height="18" rx="2" fill="#ffffff" stroke="rgba(1,29,81,0.2)" stroke-width="1"/>
-            <circle cx="24" cy="33" r="3" fill="#011d51"/><circle cx="34" cy="33" r="3" fill="rgba(1,29,81,0.2)"/><circle cx="44" cy="33" r="3" fill="rgba(1,29,81,0.2)"/>
-            <rect x="18" y="47" width="14" height="8" rx="2" fill="#ffffff" stroke="rgba(1,29,81,0.2)" stroke-width="1"/>
-            <rect x="36" y="47" width="14" height="8" rx="2" fill="#ffffff" stroke="rgba(1,29,81,0.2)" stroke-width="1"/>
-            <line x1="24" y1="62" x2="24" y2="70" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="43" y1="62" x2="43" y2="70" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="24" cy="70" r="2" fill="#011d51"/><circle cx="43" cy="70" r="2" fill="#011d51"/>
+            <rect x="12" y="18" width="44" height="44" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
+            <rect x="18" y="24" width="32" height="18" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="24" cy="33" r="3" fill="#ffffff"/><circle cx="34" cy="33" r="3" fill="rgba(255,255,255,0.3)"/><circle cx="44" cy="33" r="3" fill="rgba(255,255,255,0.3)"/>
+            <rect x="18" y="47" width="14" height="8" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <rect x="36" y="47" width="14" height="8" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <line x1="24" y1="62" x2="24" y2="70" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="43" y1="62" x2="43" y2="70" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="70" r="2" fill="#ffffff"/><circle cx="43" cy="70" r="2" fill="#ffffff"/>
           </svg>
           <div class="equip-photo-badge">Relay</div>
         </div>
@@ -987,15 +991,15 @@
       <div class="equip-card">
         <div class="equip-photo">
           <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="20" width="42" height="40" rx="4" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <rect x="14" y="26" width="30" height="14" rx="2" fill="#ffffff" stroke="rgba(1,29,81,0.2)" stroke-width="1"/>
-            <polyline points="17,33 22,27 27,36 32,29 37,33 41,30" stroke="#011d51" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="14" y="44" width="8" height="8" rx="1" fill="#011d51" opacity="0.4"/>
-            <rect x="26" y="44" width="8" height="8" rx="1" fill="rgba(1,29,81,0.1)"/>
-            <rect x="38" y="44" width="8" height="8" rx="1" fill="rgba(1,29,81,0.1)"/>
-            <line x1="50" y1="30" x2="68" y2="22" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="50" y1="50" x2="68" y2="58" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="70" cy="22" r="3" fill="#011d51"/><circle cx="70" cy="58" r="3" fill="#011d51"/>
+            <rect x="8" y="20" width="42" height="40" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
+            <rect x="14" y="26" width="30" height="14" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <polyline points="17,33 22,27 27,36 32,29 37,33 41,30" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="14" y="44" width="8" height="8" rx="1" fill="#ffffff" opacity="0.6"/>
+            <rect x="26" y="44" width="8" height="8" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="38" y="44" width="8" height="8" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <line x1="50" y1="30" x2="68" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="68" y2="58" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="70" cy="22" r="3" fill="#ffffff"/><circle cx="70" cy="58" r="3" fill="#ffffff"/>
           </svg>
           <div class="equip-photo-badge">ACB</div>
         </div>
@@ -1004,17 +1008,17 @@
       <div class="equip-card">
         <div class="equip-photo">
           <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="15" y="20" width="50" height="32" rx="4" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <rect x="21" y="26" width="22" height="20" rx="2" fill="#ffffff" stroke="rgba(1,29,81,0.2)" stroke-width="1"/>
-            <circle cx="32" cy="36" r="7" fill="#ffffff" stroke="#011d51" stroke-width="1.2"/>
-            <line x1="32" y1="30" x2="32" y2="42" stroke="rgba(1,29,81,0.15)" stroke-width="0.8"/>
-            <line x1="26" y1="36" x2="38" y2="36" stroke="rgba(1,29,81,0.15)" stroke-width="0.8"/>
-            <line x1="32" y1="33" x2="36" y2="36" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="47" y="27" width="12" height="7" rx="1" fill="#ffffff" stroke="rgba(1,29,81,0.15)" stroke-width="0.8"/>
-            <rect x="47" y="37" width="12" height="7" rx="1" fill="#ffffff" stroke="rgba(1,29,81,0.15)" stroke-width="0.8"/>
-            <line x1="25" y1="52" x2="25" y2="62" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="55" y1="52" x2="55" y2="62" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="25" cy="63" r="2" fill="#011d51"/><circle cx="55" cy="63" r="2" fill="#011d51"/>
+            <rect x="15" y="20" width="50" height="32" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
+            <rect x="21" y="26" width="22" height="20" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="32" cy="36" r="7" fill="#011d51" stroke="#ffffff" stroke-width="1.2"/>
+            <line x1="32" y1="30" x2="32" y2="42" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <line x1="26" y1="36" x2="38" y2="36" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <line x1="32" y1="33" x2="36" y2="36" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="47" y="27" width="12" height="7" rx="1" fill="#011d51" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <rect x="47" y="37" width="12" height="7" rx="1" fill="#011d51" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <line x1="25" y1="52" x2="25" y2="62" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="55" y1="52" x2="55" y2="62" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="25" cy="63" r="2" fill="#ffffff"/><circle cx="55" cy="63" r="2" fill="#ffffff"/>
           </svg>
           <div class="equip-photo-badge">Resistance</div>
         </div>
@@ -1023,14 +1027,14 @@
       <div class="equip-card">
         <div class="equip-photo">
           <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="22" width="44" height="36" rx="4" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <polygon points="32,28 26,40 31,40 28,52 42,36 36,36 40,28" fill="#011d51" opacity="0.6"/>
-            <rect x="58" y="28" width="10" height="24" rx="3" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <line x1="54" y1="35" x2="58" y2="35" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="54" y1="40" x2="58" y2="40" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="54" y1="45" x2="58" y2="45" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="32" y1="58" x2="32" y2="66" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="32" cy="68" r="2.5" fill="#011d51"/>
+            <rect x="10" y="22" width="44" height="36" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
+            <polygon points="32,28 26,40 31,40 28,52 42,36 36,36 40,28" fill="#ffffff" opacity="0.8"/>
+            <rect x="58" y="28" width="10" height="24" rx="3" fill="#1a4a9e" stroke="#ffffff" stroke-width="1"/>
+            <line x1="54" y1="35" x2="58" y2="35" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="54" y1="40" x2="58" y2="40" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="54" y1="45" x2="58" y2="45" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="32" y1="58" x2="32" y2="66" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="32" cy="68" r="2.5" fill="#ffffff"/>
           </svg>
           <div class="equip-photo-badge">HV</div>
         </div>
@@ -1039,16 +1043,16 @@
       <div class="equip-card">
         <div class="equip-photo">
           <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="16" width="40" height="36" rx="4" fill="#d5dce5" stroke="#011d51" stroke-width="1.2"/>
-            <rect x="18" y="22" width="28" height="18" rx="2" fill="#ffffff" stroke="rgba(1,29,81,0.2)" stroke-width="1"/>
-            <polyline points="20,31 25,25 30,34 35,27 40,31 44,28" stroke="#011d51" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="22" cy="43" r="3" fill="#011d51" opacity="0.5"/>
-            <circle cx="32" cy="43" r="3" fill="rgba(1,29,81,0.15)"/>
-            <circle cx="42" cy="43" r="3" fill="rgba(1,29,81,0.15)"/>
-            <line x1="32" y1="52" x2="32" y2="58" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="22" y1="60" x2="42" y2="60" stroke="#011d51" stroke-width="2" stroke-linecap="round"/>
-            <line x1="25" y1="63" x2="39" y2="63" stroke="#011d51" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="28" y1="66" x2="36" y2="66" stroke="#011d51" stroke-width="1" stroke-linecap="round"/>
+            <rect x="12" y="16" width="40" height="36" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
+            <rect x="18" y="22" width="28" height="18" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <polyline points="20,31 25,25 30,34 35,27 40,31 44,28" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="43" r="3" fill="#ffffff" opacity="0.7"/>
+            <circle cx="32" cy="43" r="3" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="42" cy="43" r="3" fill="rgba(255,255,255,0.2)"/>
+            <line x1="32" y1="52" x2="32" y2="58" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="22" y1="60" x2="42" y2="60" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <line x1="25" y1="63" x2="39" y2="63" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="28" y1="66" x2="36" y2="66" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
           </svg>
           <div class="equip-photo-badge">Earth</div>
         </div>
@@ -1113,14 +1117,14 @@
 <section id="contact">
   <div class="section-inner">
     <div class="fade-up">
-      <div class="section-eyebrow">Get In Touch</div>
-      <div class="divider"></div>
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-lead">Ready to improve your electrical infrastructure reliability? Let's talk.</p>
+      <div class="section-eyebrow" style="color:rgba(255,255,255,0.5);">Get In Touch</div>
+      <div class="divider light"></div>
+      <h2 class="section-title light">Contact Us</h2>
+      <p class="section-lead light">Ready to improve your electrical infrastructure reliability? Let's talk.</p>
     </div>
     <div class="contact-grid" style="margin-top:3rem;">
       <div class="fade-up">
-        <h3 style="font-family:'Calibri',sans-serif; color:#011d51; font-size:1.2rem; margin-bottom:1.5rem;">Get in Touch</h3>
+        <h3 style="font-family:'Calibri',sans-serif; color:white; font-size:1.2rem; margin-bottom:1.5rem;">Get in Touch</h3>
         <div class="contact-items">
           <div class="contact-item">
             <div class="contact-item-icon">📍</div>
@@ -1151,10 +1155,10 @@
             </div>
           </div>
         </div>
-        <div style="margin-top:2rem; padding:1.5rem; background:#f8f9fc; border:1px solid rgba(1,29,81,0.06); border-radius:10px;">
-          <div style="color:#011d51; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem;">⚡ Emergency Breakdown?</div>
-          <div style="color:#4a5c6e; font-size:0.9rem; line-height:1.6;">Call our 24/7 breakdown support line immediately. We respond fast to minimize your downtime.</div>
-          <a href="tel:+919972595963" style="display:inline-block; margin-top:1rem; color:#011d51; font-weight:700; text-decoration:none; font-size:1.1rem; border-bottom:1px solid rgba(1,29,81,0.2);">+91 99725 95963 →</a>
+        <div style="margin-top:2rem; padding:1.5rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:10px;">
+          <div style="color:white; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem;">⚡ Emergency Breakdown?</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:1.6;">Call our 24/7 breakdown support line immediately. We respond fast to minimize your downtime.</div>
+          <a href="tel:+919972595963" style="display:inline-block; margin-top:1rem; color:white; font-weight:700; text-decoration:none; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.3);">+91 99725 95963 →</a>
         </div>
       </div>
       <div class="fade-up">
@@ -1191,28 +1195,28 @@
 </section>
 
 <!-- VALUE PILLARS -->
-<section id="values" style="background: #ffffff; padding: 4rem 0;">
+<section id="values" style="background: #011d51; padding: 4rem 0;">
   <div class="section-inner">
-    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:1px; background:#e8edf2; border:1px solid #e8edf2; border-radius:12px; overflow:hidden;">
-      <div class="pillar" onmouseover="this.style.background='#f0f2f5'" onmouseout="this.style.background='#ffffff'">
-        <div class="pillar-icon">✅</div>
-        <div class="pillar-label">Quality</div>
-        <div class="pillar-desc">Delivering excellence in every project.</div>
+    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;">
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">✅</div>
+        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Quality</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Delivering excellence in every project.</div>
       </div>
-      <div class="pillar" onmouseover="this.style.background='#f0f2f5'" onmouseout="this.style.background='#ffffff'">
-        <div class="pillar-icon">⛑️</div>
-        <div class="pillar-label">Safety</div>
-        <div class="pillar-desc">A culture of safety, for everyone.</div>
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">⛑️</div>
+        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Safety</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">A culture of safety, for everyone.</div>
       </div>
-      <div class="pillar" onmouseover="this.style.background='#f0f2f5'" onmouseout="this.style.background='#ffffff'">
-        <div class="pillar-icon">🤝</div>
-        <div class="pillar-label">Commitment</div>
-        <div class="pillar-desc">Committed to our clients, always.</div>
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">🤝</div>
+        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Commitment</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Committed to our clients, always.</div>
       </div>
-      <div class="pillar" onmouseover="this.style.background='#f0f2f5'" onmouseout="this.style.background='#ffffff'">
-        <div class="pillar-icon">🏅</div>
-        <div class="pillar-label">Reliability</div>
-        <div class="pillar-desc">Reliable solutions. Long-lasting results.</div>
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">🏅</div>
+        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Reliability</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Reliable solutions. Long-lasting results.</div>
       </div>
     </div>
   </div>
@@ -1232,7 +1236,7 @@
     </div>
     <div class="footer-right">
       Basaveshwara Nagar, Bengaluru – 560079<br/>
-      <a href="tel:+919972595963">+91 99725 95963</a>
+      <a href="tel:+919972595963" style="color:white; text-decoration:none; opacity:0.7;">+91 99725 95963</a>
     </div>
   </div>
 </footer>
