@@ -289,7 +289,7 @@
       background-size: 30px 30px;
     }
     .about-circuit { position: relative; z-index: 2; text-align: center; padding: 2rem; }
-    .about-circuit-icon { font-size: 5rem; margin-bottom: 1rem; opacity: 0.7; }
+    .about-circuit-icon { font-size: 5rem; margin-bottom: -8px; opacity: 0.7; }
     .about-circuit-text {
       font-family: 'Calibri', sans-serif;
       font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.6;
@@ -492,7 +492,13 @@
     .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-left { display: flex; align-items: center; gap: 12px; }
     .footer-logo-wrap { display: flex; align-items: center; justify-content: center; border-radius: 4px; overflow: hidden; }
-    .footer-logo-wrap img { height: 34px; filter: brightness(0) invert(1); width: auto; display: block; object-fit: contain; }
+.footer-logo-wrap img {
+    height: 60px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    filter: none;
+}
     .footer-name { font-family: 'Calibri', sans-serif; color: white; font-size: 1rem; font-weight: 700; }
     .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.78rem; margin-top: 2px; }
     .footer-right { color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: right; }
@@ -560,8 +566,8 @@
       <div class="hero-pdf-tagline">Powering <strong>Reliability.</strong> Ensuring <strong>Safety.</strong></div>
       <h1 class="hero-title">
         Keeping Industries<br/>
-        <span class="accent">Powered,</span> Productive<br/>
-        &amp; Protected.
+       Powered,Productive<br/>
+        &amp;  <span class="accent">Protected.</span> 
       </h1>
       <p class="hero-tagline">
         Bengaluru's trusted electrical engineering partner for <strong>LT &amp; HT systems</strong>.
@@ -1231,7 +1237,7 @@
       </div>
       <div>
         <div class="footer-name">Dharthi Engineers</div>
-        <div class="footer-copy">© 2024 Dharthi Engineers. All rights reserved.</div>
+        <div class="footer-copy">©Dharthi Engineers. All rights reserved.</div>
       </div>
     </div>
     <div class="footer-right">
