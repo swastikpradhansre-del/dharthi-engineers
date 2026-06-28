@@ -5,524 +5,230 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dharthi Engineers – Keeping Industries Powered, Productive, and Protected</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* ── BASE & RESET ── */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Calibri', 'Inter', sans-serif;
-      background: #ffffff;  /* WHITE BACKGROUND for perfect logo alignment */
-      color: #011d51;       /* navy text on white sections */
-      overflow-x: hidden;
-      font-weight: 400;
-      line-height: 1.6;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Calibri', 'Inter', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-    /* ── all sections except hero & dark ones keep white bg ── */
-    section:not(.hero):not(#founder):not(#deliver):not(#international):not(#contact):not(#values) {
-      background: #ffffff;
-    }
-    #about, #vision, #why, #solutions, #industries, #technical, #breakdown, #equipment, #clients {
-      background: #ffffff;
-    }
-    /* dark sections keep their navy/dark backgrounds */
-    .hero, #founder, #deliver, #international, #contact, #values {
-      background: #011d51; /* navy */
-    }
-    #deliver { background: #011d51; }
-    #international { background: #01113a; }
-    #values { background: #011d51; }
-    #founder { background: #011d51; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      background: #ffffff;  /* WHITE NAV BACKGROUND */
-      backdrop-filter: none; /* removed blur for clean white */
-      border-bottom: 2px solid #e8edf2; /* subtle grey border instead of white */
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    }
-    .nav-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; height: 68px;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      padding: 6px 12px;
-      background: transparent; /* clean white, no background */
-      border: none;
-      border-radius: 0;
-      backdrop-filter: none;
-      text-decoration: none;
-      gap: 10px;
-    }
-    .nav-logo-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 50px;
-      width: auto;
-      background: transparent;
-    }
-    .nav-logo-icon img {
-      height: 50px;
-      width: auto;
-      display: block;
-      object-fit: contain;
-      filter: none; /* keep original logo colors */
-    }
-    .nav-logo-text {
-      color: #011d51; /* navy text on white */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 2px;
-    }
-    .nav-logo-text span {
-      font-family: 'Calibri', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      display: block;
-      letter-spacing: 0.01em;
-      line-height: 1.2;
-      color: #011d51;
-    }
-    .nav-links { display: flex; gap: 0.25rem; align-items: center; }
-    .nav-links a {
-      color: #4a5c6e; /* grey-mid on white */
-      text-decoration: none;
-      padding: 0.4rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      transition: all 0.2s;
-    }
-    .nav-links a:hover { color: #011d51; background: #f0f2f5; }
-    .nav-cta {
-      background: #011d51; color: #ffffff !important;
-      padding: 0.4rem 1.1rem !important;
-      border-radius: 4px;
-      font-weight: 700 !important;
-      letter-spacing: 0.04em !important;
-    }
-    .nav-cta:hover { background: #1a3a7a !important; color: #ffffff !important; }
-    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #011d51; margin: 5px 0; transition: 0.3s; }
-    @media(max-width:900px) {
-      .nav-links { display: none; }
-      .nav-links.open {
-        display: flex; flex-direction: column;
-        position: absolute; top: 68px; left: 0; right: 0;
-        background: #ffffff;
-        padding: 1rem 2rem 1.5rem;
-        gap: 0.25rem;
-        border-bottom: 2px solid #e8edf2;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      }
-      .hamburger { display: block; }
-      .nav-logo-text span { font-size: 0.95rem; }
-      .nav-logo-icon img { height: 36px; }
-      .nav-links a { color: #011d51; }
-      .nav-links a:hover { background: #f0f2f5; }
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; position: relative; overflow: hidden;
-      background: #011d51;
-      display: flex; align-items: center;
-    }
-    .hero-bg-grid {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-bg-glow {
-      position: absolute; pointer-events: none;
-      border-radius: 50%; filter: blur(90px); opacity: 0.12;
-    }
-    .hero-bg-glow.g1 {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, #ffffff, transparent);
-      top: -200px; right: -100px;
-    }
-    .hero-bg-glow.g2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, #8a99aa, transparent);
-      bottom: -150px; left: -100px;
-    }
-    .power-line {
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none; overflow: hidden;
-    }
-    .power-line svg { width: 100%; height: 100%; }
-    .bolt-path {
-      stroke: #ffffff; stroke-width: 1.5; fill: none; opacity: 0.15;
-      stroke-dasharray: 1200; stroke-dashoffset: 1200;
-      animation: drawLine 3s ease forwards 0.5s;
-    }
-    @keyframes drawLine { to { stroke-dashoffset: 0; } }
-    .hero-content {
-      position: relative; z-index: 2; max-width: 1280px;
-      margin: 0 auto; padding: 0 2rem; padding-top: 68px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    }
-    @media(max-width:900px) { .hero-content { grid-template-columns: 1fr; gap: 2rem; padding-top: 100px; } }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 100px; padding: 5px 14px;
-      color: #ffffff; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
-    }
-    .hero-eyebrow::before { content: '⚡'; }
-    .hero-pdf-tagline {
-      font-size: 1.05rem; color: rgba(255,255,255,0.55);
-      letter-spacing: 0.06em; margin-bottom: 1.2rem;
-      text-transform: uppercase; font-weight: 400;
-    }
-    .hero-pdf-tagline strong { color: #ffffff; font-weight: 700; }
-    .hero-title {
-      font-family: 'Calibri', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 900; color: white; line-height: 1.1;
-      margin-bottom: 1.25rem;
-    }
-    .hero-title .accent { color: #ffffff; border-bottom: 3px solid rgba(255,255,255,0.3); }
-    .hero-tagline {
-      font-size: 1rem; color: rgba(255,255,255,0.6);
-      line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px;
-      font-weight: 300;
-    }
-    .hero-tagline strong { color: rgba(255,255,255,0.85); font-weight: 500; }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: #ffffff; color: #011d51;
-      padding: 0.85rem 2rem; border-radius: 6px;
-      font-weight: 700; font-size: 0.9rem; text-decoration: none;
-      letter-spacing: 0.04em; transition: all 0.25s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover { background: #e8edf2; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-    .btn-secondary {
-      border: 1.5px solid rgba(255,255,255,0.35); color: white;
-      padding: 0.85rem 2rem; border-radius: 6px;
-      font-weight: 500; font-size: 0.9rem; text-decoration: none;
-      letter-spacing: 0.03em; transition: all 0.25s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-secondary:hover { border-color: #ffffff; color: #ffffff; background: rgba(255,255,255,0.05); }
-    .hero-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px; overflow: hidden; margin-top: 3rem;
-    }
-    .stat-item { padding: 1.5rem; background: rgba(1,29,81,0.5); text-align: center; }
-    .stat-num {
-      font-family: 'Calibri', sans-serif;
-      font-size: 2.2rem; font-weight: 900; color: #ffffff;
-      line-height: 1; margin-bottom: 4px;
-    }
-    .stat-label { font-size: 0.72rem; color: #8a99aa; letter-spacing: 0.06em; text-transform: uppercase; }
-    .hero-right { display: flex; flex-direction: column; gap: 1rem; }
-    @media(max-width:900px) { .hero-right { display: none; } }
-    .service-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-left: 3px solid #ffffff;
-      border-radius: 8px; padding: 1rem 1.25rem;
-      display: flex; align-items: center; gap: 1rem;
-      transition: all 0.3s;
-    }
-    .service-card:hover { background: rgba(255,255,255,0.08); transform: translateX(6px); }
-    .service-card-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .service-card-title { color: white; font-weight: 600; font-size: 0.88rem; }
-    .service-card-desc { color: rgba(255,255,255,0.45); font-size: 0.75rem; margin-top: 2px; }
-
-    /* ── SECTION COMMON ── */
-    section { padding: 6rem 0; }
-    .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-    .section-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: #4a5c6e; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem;
-    }
-    .section-eyebrow::before { content: '—'; color: #011d51; margin-right: 2px; }
-    .section-title {
-      font-family: 'Calibri', sans-serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
-      color: #011d51; line-height: 1.2; margin-bottom: 1rem;
-    }
-    .section-title.light { color: white; }
-    .section-lead { font-size: 1.05rem; color: #4a5c6e; line-height: 1.75; max-width: 640px; }
-    .section-lead.light { color: rgba(255,255,255,0.65); }
-    .divider { width: 60px; height: 3px; background: #011d51; margin-bottom: 1.5rem; }
-    .divider.light { background: #ffffff; }
-
-    /* ── ABOUT ── */
-    #about { background: #ffffff; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    @media(max-width:900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
-    .about-visual {
-      position: relative; aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #011d51, #01113a);
-      border-radius: 12px; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .about-visual-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 30px 30px;
-    }
-    .about-circuit { position: relative; z-index: 2; text-align: center; padding: 2rem; }
-    .about-circuit-icon { font-size: 5rem; margin-bottom: -8px; opacity: 0.7; }
-    .about-circuit-text {
-      font-family: 'Calibri', sans-serif;
-      font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.6;
-    }
-    .about-circuit-text strong { color: #ffffff; font-size: 2rem; display: block; margin-bottom: 4px; }
-    .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
-    .badge {
-      background: rgba(1,29,81,0.08); border: 1px solid rgba(1,29,81,0.15);
-      color: #011d51; font-size: 0.78rem; font-weight: 600;
-      padding: 6px 14px; border-radius: 100px; letter-spacing: 0.03em;
-    }
-    .about-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .about-list li {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 1rem 1.25rem;
-      background: #ffffff; border-radius: 8px;
-      border-left: 3px solid #011d51;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-    }
-    .about-list li::before { content: '✦'; color: #011d51; font-size: 0.75rem; margin-top: 3px; flex-shrink: 0; }
-    .about-list li span { font-size: 0.9rem; color: #4a5c6e; line-height: 1.6; }
-
-    /* ── FOUNDER ── */
-    #founder { background: #011d51; }
-    .founder-grid { display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: start; }
-    @media(max-width:900px) { .founder-grid { grid-template-columns: 1fr; gap: 2rem; } }
-    .founder-photo {
-      width: 240px; height: 300px;
-      background: linear-gradient(145deg, #01113a, #010e28);
-      border-radius: 12px; overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.15);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 12px; flex-shrink: 0;
-    }
-    @media(max-width:900px) { .founder-photo { width: 100%; height: 220px; } }
-    .founder-photo-icon { font-size: 5rem; opacity: 0.4; }
-    .founder-photo-label { color: rgba(255,255,255,0.3); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
-    .founder-quote {
-      position: relative; padding: 2.5rem 2.5rem 2rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-    }
-    .founder-quote::before {
-      content: '\201C'; position: absolute; top: -20px; left: 20px;
-      font-family: 'Calibri', sans-serif; font-size: 6rem;
-      color: #ffffff; opacity: 0.15; line-height: 1;
-    }
-    .founder-quote p { color: rgba(255,255,255,0.75); font-size: 1.02rem; line-height: 1.85; font-style: italic; margin-bottom: 1.5rem; }
-    .founder-name { font-family: 'Calibri', sans-serif; font-size: 1.2rem; color: white; font-weight: 700; }
-    .founder-title { color: #8a99aa; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
-
-    /* ── VISION MISSION ── */
-    #vision { background: #ffffff; }
-    .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
-    @media(max-width:700px) { .vm-grid { grid-template-columns: 1fr; gap: 2rem; } }
-    .vm-item { padding: 2rem 0; border-top: 3px solid #011d51; }
-    .vm-label { color: #4a5c6e; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem; }
-    .vm-title { font-family: 'Calibri', sans-serif; font-size: 1.4rem; color: #011d51; margin-bottom: 1rem; font-weight: 700; }
-    .vm-text { color: #4a5c6e; font-size: 0.95rem; line-height: 1.8; }
-
-    /* ── WHY CHOOSE ── */
-    #why { background: #ffffff; }
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-    @media(max-width:900px) { .why-grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:600px) { .why-grid { grid-template-columns: 1fr; } }
-    .why-card {
-      background: #ffffff; padding: 2rem; border-radius: 10px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-      border-top: 3px solid transparent;
-      transition: all 0.3s;
-    }
-    .why-card:hover { border-top-color: #011d51; transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
-    .why-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .why-title { font-weight: 700; font-size: 0.95rem; color: #011d51; margin-bottom: 0.5rem; }
-    .why-desc { font-size: 0.85rem; color: #4a5c6e; line-height: 1.7; }
-
-    /* ── WHAT WE DELIVER ── */
-    #deliver { background: #011d51; }
-    .deliver-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: 3rem; }
-    @media(max-width:900px) { .deliver-grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:500px) { .deliver-grid { grid-template-columns: 1fr; } }
-    .deliver-item { padding: 2.5rem 1.5rem; text-align: center; background: rgba(1,29,81,0.6); transition: background 0.3s; }
-    .deliver-item:hover { background: rgba(255,255,255,0.06); }
-    .deliver-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-    .deliver-title { color: white; font-weight: 600; font-size: 0.88rem; line-height: 1.4; }
-    .deliver-bar { width: 30px; height: 2px; background: #ffffff; margin: 10px auto 0; opacity: 0.5; }
-
-    /* ── SOLUTIONS ── */
-    #solutions { background: #ffffff; }
-    .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-    @media(max-width:900px) { .solutions-grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:600px) { .solutions-grid { grid-template-columns: 1fr; } }
-    .sol-card { border: 1px solid #e8edf2; border-radius: 12px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s; background: #ffffff; }
-    .sol-card:hover { border-color: #011d51; box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-4px); }
-    .sol-card:hover .sol-arrow { transform: translateX(4px); color: #011d51; }
-    .sol-icon-wrap { width: 54px; height: 54px; border-radius: 10px; background: linear-gradient(135deg, #011d51, #01113a); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.25rem; }
-    .sol-title { font-weight: 700; font-size: 1rem; color: #011d51; margin-bottom: 0.75rem; }
-    .sol-desc { font-size: 0.83rem; color: #4a5c6e; line-height: 1.75; }
-    .sol-arrow { display: inline-block; margin-top: 1rem; color: #8a99aa; font-size: 1.1rem; transition: all 0.25s; }
-
-    /* ── INDUSTRIES ── */
-    #industries { background: #ffffff; }
-    .ind-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 3rem; }
-    @media(max-width:900px) { .ind-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media(max-width:500px) { .ind-grid { grid-template-columns: repeat(2, 1fr); } }
-    .ind-card { background: #ffffff; border-radius: 10px; padding: 1.75rem 1rem; text-align: center; border: 1px solid #e8edf2; transition: all 0.3s; cursor: default; }
-    .ind-card:hover { border-color: #011d51; box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-3px); }
-    .ind-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .ind-label { font-size: 0.8rem; font-weight: 600; color: #011d51; line-height: 1.4; }
-
-    /* ── INTERNATIONAL ── */
-    #international { background: #01113a; }
-    .intl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-    @media(max-width:700px) { .intl-grid { grid-template-columns: 1fr; } }
-    .intl-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.5rem; }
-    .intl-card:hover { background: rgba(255,255,255,0.07); }
-    .intl-flag { font-size: 3rem; margin-bottom: 1rem; }
-    .intl-country { font-family: 'Calibri', sans-serif; font-size: 1.6rem; color: white; font-weight: 700; margin-bottom: 0.5rem; }
-    .intl-project { color: #8a99aa; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
-    .intl-desc { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.8; }
-    .intl-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #ffffff; font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-top: 1.25rem; margin-right: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    /* ── TECHNICAL ── */
-    #technical { background: #ffffff; }
-    .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-    @media(max-width:700px) { .tech-grid { grid-template-columns: 1fr; } }
-    .tech-card { text-align: center; padding: 2.5rem 2rem; border: 1px solid #e8edf2; border-radius: 12px; transition: all 0.3s; background: #ffffff; }
-    .tech-card:hover { border-color: #011d51; box-shadow: 0 6px 24px rgba(1,29,81,0.06); }
-    .tech-icon { font-size: 3rem; margin-bottom: 1.25rem; }
-    .tech-title { font-weight: 700; font-size: 1.05rem; color: #011d51; margin-bottom: 0.75rem; }
-    .tech-desc { font-size: 0.85rem; color: #4a5c6e; line-height: 1.75; }
-
-    /* ── BREAKDOWN ── */
-    #breakdown { background: #ffffff; padding: 5rem 0; }
-    .breakdown-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-    .breakdown-content { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
-    .breakdown-title { font-family: 'Calibri', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; color: #011d51; margin-bottom: 1rem; line-height: 1.2; }
-    .breakdown-text { color: #4a5c6e; font-size: 1rem; line-height: 1.75; max-width: 680px; }
-    .breakdown-highlights { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
-    .breakdown-hl { display: flex; align-items: center; gap: 8px; }
-    .breakdown-hl-dot { width: 8px; height: 8px; border-radius: 50%; background: #011d51; opacity: 0.5; }
-    .breakdown-hl-text { font-size: 0.88rem; font-weight: 600; color: #011d51; opacity: 0.75; }
-
-    /* ── EQUIPMENT ── */
-    #equipment { background: #ffffff; }
-    .equip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-    @media(max-width:900px) { .equip-grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:500px) { .equip-grid { grid-template-columns: 1fr; } }
-    .equip-card { background: #ffffff; border-radius: 10px; overflow: hidden; border: 1px solid #e8edf2; transition: all 0.3s; }
-    .equip-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-3px); border-color: #011d51; }
-    .equip-photo { height: 140px; background: linear-gradient(135deg, #011d51, #01113a); display: flex; align-items: center; justify-content: center; position: relative; }
-    .equip-svg { width: 80px; height: 80px; opacity: 0.85; }
-    .equip-photo-badge { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); color: #ffffff; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; letter-spacing: 0.08em; text-transform: uppercase; }
-    .equip-info { padding: 1.25rem; }
-    .equip-name { font-weight: 700; font-size: 0.9rem; color: #011d51; margin-bottom: 4px; }
-    .equip-use { font-size: 0.78rem; color: #4a5c6e; }
-
-    /* ── CLIENTS ── */
-    #clients { background: #ffffff; }
-    .clients-marquee { margin-top: 3rem; overflow: hidden; position: relative; }
-    .clients-marquee::before, .clients-marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; }
-    .clients-marquee::before { left: 0; background: linear-gradient(to right, #ffffff, transparent); }
-    .clients-marquee::after { right: 0; background: linear-gradient(to left, #ffffff, transparent); }
-    .clients-track { display: flex; gap: 0; width: max-content; animation: marquee 30s linear infinite; }
-    .clients-track:hover { animation-play-state: paused; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .client-chip { display: flex; align-items: center; gap: 8px; padding: 0.75rem 1.75rem; margin: 0 0.5rem; background: #f5f7fa; border: 1px solid #e8edf2; border-radius: 8px; white-space: nowrap; }
-    .client-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: #011d51; }
-    .client-chip-name { font-weight: 600; font-size: 0.85rem; color: #011d51; }
-    .client-note { text-align: center; margin-top: 2rem; color: #8a99aa; font-size: 0.85rem; }
-
-    /* ── CONTACT ── */
-    #contact { background: #011d51; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    @media(max-width:900px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
-    .contact-items { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
-    .contact-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.5rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; transition: background 0.25s; }
-    .contact-item:hover { background: rgba(255,255,255,0.07); }
-    .contact-item-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-    .contact-item-label { color: #8a99aa; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
-    .contact-item-value { color: white; font-size: 0.95rem; font-weight: 500; text-decoration: none; }
-    .contact-item-value:hover { color: #ffffff; text-decoration: underline; }
-    .contact-form { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2.5rem; }
-    .contact-form h3 { font-family: 'Calibri', sans-serif; color: white; font-size: 1.3rem; margin-bottom: 1.5rem; }
-    .form-group { margin-bottom: 1.25rem; }
-    .form-group label { display: block; color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 0.75rem 1rem; color: white; font-size: 0.9rem; font-family: 'Calibri', sans-serif; outline: none; transition: border 0.25s; }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #ffffff; }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-group select option { background: #011d51; color: white; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media(max-width:500px) { .form-row { grid-template-columns: 1fr; } }
-    .form-submit { width: 100%; background: #ffffff; color: #011d51; border: none; padding: 0.9rem; border-radius: 6px; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: 'Calibri', sans-serif; letter-spacing: 0.04em; transition: all 0.25s; }
-    .form-submit:hover { background: #e8edf2; transform: translateY(-1px); }
-
-    /* ── FOOTER ── */
-    footer { background: #010e28; border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 0; }
-    .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-    .footer-left { display: flex; align-items: center; gap: 12px; }
-    .footer-logo-wrap { display: flex; align-items: center; justify-content: center; border-radius: 4px; overflow: hidden; }
-.footer-logo-wrap img {
-    height: 60px;
-    width: auto;
-    display: block;
-    object-fit: contain;
-    filter: none;
+/* ── BIG NAV like reference ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: #ffffff;
+  border-bottom: 2px solid #e8edf2;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
 }
-    .footer-name { font-family: 'Calibri', sans-serif; color: white; font-size: 1rem; font-weight: 700; }
-    .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.78rem; margin-top: 2px; }
-    .footer-right { color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: right; }
+.nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 82px;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { display: flex; align-items: center; height: 64px; }
+.nav-logo-icon img { height: 64px; width: auto; object-fit: contain; }
+.nav-logo-text { color: #011d51; display: flex; flex-direction: column; gap: 2px; }
+.nav-links { display: flex; gap: 0.05rem; align-items: center; }
+.nav-links a {
+  color: #011d51;
+  text-decoration: none;
+  padding: 0.55rem 1rem;
+  border-radius: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+}
+.nav-links a:hover { color: #011d51; border-bottom-color: #011d51; background: transparent; }
+.nav-cta {
+  background: #011d51 !important; color: #ffffff !important;
+  padding: 0.55rem 1.3rem !important;
+  border-radius: 3px !important; font-weight: 700 !important;
+  border-bottom: none !important; margin-left: 0.5rem;
+}
+.nav-cta:hover { background: #1a3a7a !important; border-bottom: none !important; }
+.nav-action-btns { display: flex; gap: 0.5rem; align-items: center; margin-left: 1rem; }
+.nav-call-btn {
+  background: #011d51; color: white;
+  padding: 0.55rem 1.2rem; border-radius: 3px;
+  font-size: 0.85rem; font-weight: 700;
+  text-decoration: none; letter-spacing: 0.03em;
+  transition: all 0.2s; white-space: nowrap;
+}
+.nav-call-btn:hover { background: #1a3a7a; }
+.nav-whatsapp-btn {
+  background: #25D366; color: white;
+  padding: 0.55rem 1.2rem; border-radius: 3px;
+  font-size: 0.85rem; font-weight: 700;
+  text-decoration: none; letter-spacing: 0.03em;
+  transition: all 0.2s; white-space: nowrap;
+}
+.nav-whatsapp-btn:hover { background: #1aad52; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 26px; height: 2.5px; background: #011d51; margin: 6px 0; border-radius: 2px; }
 
-    /* ── SCROLL TOP ── */
-    #scrollTop { position: fixed; bottom: 2rem; right: 2rem; z-index: 900; width: 46px; height: 46px; border-radius: 8px; background: #011d51; color: #ffffff; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
-    #scrollTop.visible { opacity: 1; pointer-events: auto; }
-    #scrollTop:hover { background: #ffffff; color: #011d51; transform: translateY(-3px); }
+@media(max-width:1150px) {
+  .nav-action-btns { display: none; }
+  .nav-links a { font-size: 0.8rem; padding: 0.5rem 0.65rem; }
+}
+@media(max-width:900px) {
+  .nav-inner { height: 70px; }
+  .nav-logo-icon { height: 52px; }
+  .nav-logo-icon img { height: 52px; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 70px; left: 0; right: 0;
+    background: #fff; padding: 1rem 2rem 1.5rem;
+    gap: 0.2rem; border-bottom: 2px solid #e8edf2;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    z-index: 100;
+  }
+  .nav-links.open a { border-bottom: 1px solid #f0f2f5 !important; border-radius: 4px; padding: 0.6rem 1rem; }
+  .nav-action-btns { display: none; }
+  .hamburger { display: block; }
+}
 
-    /* ── VALUE PILLARS ── */
-    @media(max-width:700px) { #values > .section-inner > div { grid-template-columns: 1fr 1fr !important; } }
-    @media(max-width:400px) { #values > .section-inner > div { grid-template-columns: 1fr !important; } }
-
-    /* ── ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-in { opacity: 0; transition: opacity 0.7s ease; }
-    .fade-in.visible { opacity: 1; }
-
-    /* ── NOTIFICATION ── */
-    #notification { position: fixed; bottom: 5rem; right: 2rem; z-index: 1000; background: #011d51; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.5rem; max-width: 300px; transform: translateX(120%); transition: transform 0.4s ease; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
-    #notification.show { transform: translateX(0); }
-    #notification p { color: white; font-size: 0.85rem; }
-    #notification strong { color: #ffffff; }
+/* ── SLIDER HERO ── */
+.hero {
+  position: relative; width: 100%;
+  height: 100vh; min-height: 600px;
+  overflow: hidden; margin-top: 0;
+  display: block;
+}
+.slider-container { position: absolute; inset: 0; }
+.slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1s ease;
+  display: flex; align-items: center;
+  padding-bottom: 78px;
+}
+.slide.active { opacity: 1; z-index: 1; }
+.slide-1 { background: linear-gradient(125deg, #010e28 0%, #011d51 35%, #01113a 70%, #000d2a 100%); }
+.slide-2 { background: linear-gradient(125deg, #01113a 0%, #0d2466 35%, #011d51 70%, #010e28 100%); }
+.slide-3 { background: linear-gradient(125deg, #000d2a 0%, #011d51 40%, #0a1e50 70%, #01113a 100%); }
+.slide-4 { background: linear-gradient(125deg, #010b20 0%, #01113a 40%, #011d51 70%, #0d2466 100%); }
+.slide-5 { background: linear-gradient(125deg, #011d51 0%, #010e28 40%, #01113a 70%, #000d2a 100%); }
+.slide::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 55px 55px; z-index: 0;
+}
+/* Decorative SVG-style electrical elements per slide */
+.slide-deco {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+  z-index: 1; display: flex; align-items: center; justify-content: center;
+  opacity: 0.06; font-size: 22rem; pointer-events: none;
+}
+.slide-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(1,18,50,0.7) 0%, rgba(1,29,81,0.15) 60%, transparent 100%);
+}
+.slide-content {
+  position: relative; z-index: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: clamp(2rem, 5vw, 6rem);
+  max-width: 700px;
+}
+.slide-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 100px; padding: 6px 18px;
+  color: #ffffff; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem;
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.65s ease 0.15s, transform 0.65s ease 0.15s;
+}
+.slide-title {
+  font-family: 'Calibri', 'Inter', sans-serif;
+  font-size: clamp(2.1rem, 4.2vw, 3.8rem);
+  font-weight: 900; color: white; line-height: 1.1;
+  margin-bottom: 1.25rem;
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+}
+.slide-title .accent { border-bottom: 3px solid rgba(255,255,255,0.4); }
+.slide-desc {
+  font-size: 1rem; color: rgba(255,255,255,0.7);
+  line-height: 1.78; margin-bottom: 2.5rem; max-width: 520px;
+  font-weight: 300;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.7s ease 0.45s, transform 0.7s ease 0.45s;
+}
+.slide-desc strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+.slide-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  opacity: 0; transform: translateY(15px);
+  transition: opacity 0.65s ease 0.6s, transform 0.65s ease 0.6s;
+}
+.slide.active .slide-eyebrow,
+.slide.active .slide-title,
+.slide.active .slide-desc,
+.slide.active .slide-actions { opacity: 1; transform: translateY(0); }
+.btn-primary {
+  background: #ffffff; color: #011d51;
+  padding: 0.9rem 2.2rem; border-radius: 3px;
+  font-weight: 700; font-size: 0.9rem; text-decoration: none;
+  letter-spacing: 0.04em; transition: all 0.25s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: #f0f2f5; transform: translateY(-2px); }
+.btn-secondary {
+  border: 2px solid rgba(255,255,255,0.45); color: white;
+  padding: 0.9rem 2rem; border-radius: 3px;
+  font-weight: 600; font-size: 0.9rem; text-decoration: none;
+  letter-spacing: 0.03em; transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.07); }
+.slider-arrow {
+  position: absolute; top: calc(50% - 39px); z-index: 10;
+  transform: translateY(-50%);
+  width: 54px; height: 54px;
+  background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3);
+  color: white; font-size: 2.2rem; line-height: 1;
+  border-radius: 3px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; font-family: sans-serif;
+}
+.slider-arrow:hover { background: rgba(255,255,255,0.22); border-color: white; }
+.slider-prev { left: 1.5rem; }
+.slider-next { right: 1.5rem; }
+.slider-dots {
+  position: absolute; bottom: 96px; left: 50%;
+  transform: translateX(-50%); z-index: 10;
+  display: flex; gap: 10px;
+}
+.dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.35); border: none;
+  cursor: pointer; transition: all 0.35s; padding: 0;
+}
+.dot.active { background: #ffffff; width: 32px; border-radius: 5px; }
+.hero-stats-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+  background: rgba(1,13,36,0.93);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  height: 78px;
+}
+.hero-stats-inner { display: flex; align-items: center; gap: 0; }
+.stat-item { padding: 0 2.8rem; text-align: center; }
+.stat-num { font-family: 'Calibri', sans-serif; font-size: 1.9rem; font-weight: 900; color: #fff; line-height: 1; }
+.stat-label { font-size: 0.67rem; color: rgba(255,255,255,0.48); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
+.stat-divider { width: 1px; height: 38px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
+@media(max-width:700px) {
+  .slide-content { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .slider-arrow { width: 40px; height: 40px; font-size: 1.6rem; }
+  .hero-stats-bar { height: auto; padding: 0.75rem 0; }
+  .hero-stats-inner { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .stat-divider { display: none; }
+  .stat-item { padding: 0.4rem 1.2rem; }
+}
   </style>
 </head>
 <body>
@@ -550,84 +256,151 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO SLIDER -->
 <section class="hero" id="home">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-bg-glow g1"></div>
-  <div class="hero-bg-glow g2"></div>
-  <div class="power-line">
-    <svg viewBox="0 0 1440 800" preserveAspectRatio="none">
-      <path class="bolt-path" d="M0,400 L200,200 L320,350 L480,100 L600,300 L720,150 L840,380 L960,200 L1100,420 L1200,250 L1320,380 L1440,300"/>
-    </svg>
-  </div>
-  <div class="hero-content">
-    <div>
-      <div class="hero-eyebrow">20+ Years of Engineering Excellence</div>
-      <div class="hero-pdf-tagline">Powering <strong>Reliability.</strong> Ensuring <strong>Safety.</strong></div>
-      <h1 class="hero-title">
-        Keeping Industries<br/>
-       Powered,Productive<br/>
-        &amp;  <span class="accent">Protected.</span> 
-      </h1>
-      <p class="hero-tagline">
-        Bengaluru's trusted electrical engineering partner for <strong>LT &amp; HT systems</strong>.
-        Expert maintenance, testing, diagnostics, and reliability solutions that reduce downtime
-        and extend the life of your critical electrical assets.
-      </p>
-      <div class="hero-actions">
-        <a href="#solutions" class="btn-primary">⚡ Explore Solutions</a>
-        <a href="#contact" class="btn-secondary">Get in Touch →</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-num">20+</div>
-          <div class="stat-label">Years Excellence</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">35+</div>
-          <div class="stat-label">Industry Expertise</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">24/7</div>
-          <div class="stat-label">Breakdown Support</div>
+  <div class="slider-container">
+
+    <!-- SLIDE 1 -->
+    <div class="slide slide-1 active">
+      <div class="slide-deco">⚡</div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-eyebrow">20+ Years of Engineering Excellence</div>
+        <h1 class="slide-title">
+          Keeping Industries<br/>
+          <span class="accent">Powered,</span> Productive<br/>
+          &amp; <span class="accent">Protected.</span>
+        </h1>
+        <p class="slide-desc">
+          Bengaluru's trusted electrical engineering partner for <strong>LT &amp; HT systems</strong>. Expert maintenance, testing, diagnostics, and reliability solutions that reduce downtime and extend the life of your critical electrical assets.
+        </p>
+        <div class="slide-actions">
+          <a href="#solutions" class="btn-primary">⚡ Explore Solutions</a>
+          <a href="#contact" class="btn-secondary">Get in Touch →</a>
         </div>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="service-card">
-        <div class="service-card-icon">🔌</div>
-        <div>
-          <div class="service-card-title">Electrical Maintenance &amp; AMC</div>
-          <div class="service-card-desc">Preventive, predictive &amp; breakdown programs</div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide slide-2">
+      <div class="slide-deco">🔧</div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-eyebrow">ABB-Trained Specialists · Italy Certified</div>
+        <h1 class="slide-title">
+          Switchgear &amp;<br/>
+          <span class="accent">Transformer</span><br/>
+          Reliability <span class="accent">Solutions</span>
+        </h1>
+        <p class="slide-desc">
+          Expert servicing for <strong>ACB, VCB, MCCB, and SF6 breakers</strong>. Oil filtration, BDV testing, OLTC servicing — all handled by ABB-certified specialists with world-class expertise.
+        </p>
+        <div class="slide-actions">
+          <a href="#solutions" class="btn-primary">🔧 Our Services</a>
+          <a href="#contact" class="btn-secondary">Get a Quote →</a>
         </div>
       </div>
-      <div class="service-card">
-        <div class="service-card-icon">🔧</div>
-        <div>
-          <div class="service-card-title">Switchgear Services</div>
-          <div class="service-card-desc">ACB, VCB, MCCB, SF6 breaker servicing</div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide slide-3">
+      <div class="slide-deco">🌡️</div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-eyebrow">Predictive · Preventive · Breakdown</div>
+        <h1 class="slide-title">
+          <span class="accent">Thermography</span><br/>
+          &amp; Power <span class="accent">Quality</span><br/>
+          Audits
+        </h1>
+        <p class="slide-desc">
+          Advanced thermal imaging, protection relay calibration, PT &amp; CT testing, and root cause analysis — <strong>diagnostic-driven reliability</strong> for your critical electrical assets before failures occur.
+        </p>
+        <div class="slide-actions">
+          <a href="#solutions" class="btn-primary">🌡️ Diagnostic Services</a>
+          <a href="#contact" class="btn-secondary">Contact Us →</a>
         </div>
       </div>
-      <div class="service-card">
-        <div class="service-card-icon">🌡️</div>
-        <div>
-          <div class="service-card-title">Thermography &amp; Power Audit</div>
-          <div class="service-card-desc">Diagnostic-driven reliability solutions</div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide slide-4">
+      <div class="slide-deco">🌏</div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-eyebrow">Vietnam · Mauritius · Global Standards</div>
+        <h1 class="slide-title">
+          <span class="accent">International</span><br/>
+          Project<br/>
+          <span class="accent">Experience</span>
+        </h1>
+        <p class="slide-desc">
+          Successfully delivered <strong>power plant commissioning in Vietnam</strong> and critical electrical systems in Mauritius — executing to the highest international engineering standards across borders.
+        </p>
+        <div class="slide-actions">
+          <a href="#international" class="btn-primary">🌏 View Projects</a>
+          <a href="#contact" class="btn-secondary">Work With Us →</a>
         </div>
       </div>
-      <div class="service-card">
-        <div class="service-card-icon">🏭</div>
-        <div>
-          <div class="service-card-title">ABB-Trained Specialists</div>
-          <div class="service-card-desc">Italy-certified service hub expertise</div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide slide-5">
+      <div class="slide-deco">📞</div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-eyebrow">Around the Clock · Every Day of the Year</div>
+        <h1 class="slide-title">
+          24/7 <span class="accent">Breakdown</span><br/>
+          Support — <span class="accent">Always</span><br/>
+          Ready
+        </h1>
+        <p class="slide-desc">
+          Electrical failures don't follow a schedule. Our technical team provides <strong>rapid troubleshooting response</strong> to restore critical systems and minimize production losses — any time, any day.
+        </p>
+        <div class="slide-actions">
+          <a href="tel:+919972595963" class="btn-primary">📞 Call Now: +91 99725 95963</a>
+          <a href="#contact" class="btn-secondary">Emergency Contact →</a>
         </div>
       </div>
-      <div class="service-card">
-        <div class="service-card-icon">🌏</div>
-        <div>
-          <div class="service-card-title">International Project Experience</div>
-          <div class="service-card-desc">Vietnam power plant · Mauritius</div>
-        </div>
+    </div>
+
+  </div>
+
+  <!-- Arrows -->
+  <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous">&#8249;</button>
+  <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next">&#8250;</button>
+
+  <!-- Dots -->
+  <div class="slider-dots" id="sliderDots">
+    <button class="dot active" data-index="0"></button>
+    <button class="dot" data-index="1"></button>
+    <button class="dot" data-index="2"></button>
+    <button class="dot" data-index="3"></button>
+    <button class="dot" data-index="4"></button>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="hero-stats-bar">
+    <div class="hero-stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years Excellence</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">35+</div>
+        <div class="stat-label">Industry Expertise</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Breakdown Support</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Projects Delivered</div>
       </div>
     </div>
   </div>
@@ -745,36 +518,12 @@
       <p class="section-lead">A combination of deep expertise, proven credentials, and a customer-first approach sets us apart.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card fade-up">
-        <div class="why-icon">🏆</div>
-        <div class="why-title">20+ Years of Business Excellence</div>
-        <p class="why-desc">Backed by 35+ years of hands-on industry expertise, delivering consistent quality across hundreds of industrial projects.</p>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon">🏭</div>
-        <div class="why-title">ABB-Trained Technical Capability</div>
-        <p class="why-desc">Certified through ABB SACE Service Hub, Italy — equipping our team with world-class technical knowledge in electrical systems.</p>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon">🌏</div>
-        <div class="why-title">International Project Experience</div>
-        <p class="why-desc">Successfully delivered projects in Vietnam and Mauritius, demonstrating our capability to meet global engineering standards.</p>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon">🔬</div>
-        <div class="why-title">Predictive Maintenance &amp; Diagnostics</div>
-        <p class="why-desc">Advanced thermography, power quality audits, and diagnostic tools enable proactive asset management before failures occur.</p>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon">📞</div>
-        <div class="why-title">Responsive Technical Support</div>
-        <p class="why-desc">24/7 breakdown support with rapid troubleshooting response to restore critical systems and minimize production losses.</p>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon">🔄</div>
-        <div class="why-title">End-to-End Service Delivery</div>
-        <p class="why-desc">From initial assessment through commissioning to ongoing support — a complete lifecycle approach to electrical asset management.</p>
-      </div>
+      <div class="why-card fade-up"><div class="why-icon">🏆</div><div class="why-title">20+ Years of Business Excellence</div><p class="why-desc">Backed by 35+ years of hands-on industry expertise, delivering consistent quality across hundreds of industrial projects.</p></div>
+      <div class="why-card fade-up"><div class="why-icon">🏭</div><div class="why-title">ABB-Trained Technical Capability</div><p class="why-desc">Certified through ABB SACE Service Hub, Italy — equipping our team with world-class technical knowledge in electrical systems.</p></div>
+      <div class="why-card fade-up"><div class="why-icon">🌏</div><div class="why-title">International Project Experience</div><p class="why-desc">Successfully delivered projects in Vietnam and Mauritius, demonstrating our capability to meet global engineering standards.</p></div>
+      <div class="why-card fade-up"><div class="why-icon">🔬</div><div class="why-title">Predictive Maintenance &amp; Diagnostics</div><p class="why-desc">Advanced thermography, power quality audits, and diagnostic tools enable proactive asset management before failures occur.</p></div>
+      <div class="why-card fade-up"><div class="why-icon">📞</div><div class="why-title">Responsive Technical Support</div><p class="why-desc">24/7 breakdown support with rapid troubleshooting response to restore critical systems and minimize production losses.</p></div>
+      <div class="why-card fade-up"><div class="why-icon">🔄</div><div class="why-title">End-to-End Service Delivery</div><p class="why-desc">From initial assessment through commissioning to ongoing support — a complete lifecycle approach to electrical asset management.</p></div>
     </div>
   </div>
 </section>
@@ -805,42 +554,12 @@
       <p class="section-lead">Comprehensive electrical engineering services designed to keep your operations running at peak performance.</p>
     </div>
     <div class="solutions-grid">
-      <div class="sol-card fade-up">
-        <div class="sol-icon-wrap">🔌</div>
-        <div class="sol-title">Electrical Maintenance &amp; Asset Management</div>
-        <p class="sol-desc">Preventive, predictive, shutdown, and breakdown maintenance programs designed to improve equipment reliability and operational continuity. Tailored AMC packages for industries of all scales.</p>
-        <div class="sol-arrow">→</div>
-      </div>
-      <div class="sol-card fade-up">
-        <div class="sol-icon-wrap">⚡</div>
-        <div class="sol-title">Switchgear Services</div>
-        <p class="sol-desc">Inspection, testing, calibration, refurbishment, retrofitting, and commissioning support for ACB, VCB, MCCB, and SF6 breakers. ABB-certified expertise for all major OEM equipment.</p>
-        <div class="sol-arrow">→</div>
-      </div>
-      <div class="sol-card fade-up">
-        <div class="sol-icon-wrap">🔋</div>
-        <div class="sol-title">Transformer Reliability Solutions</div>
-        <p class="sol-desc">Preventive maintenance, diagnostics, health assessments, and commissioning support. Oil filtration, BDV test, acidity test, IR winding testing, OLTC servicing, and spares support.</p>
-        <div class="sol-arrow">→</div>
-      </div>
-      <div class="sol-card fade-up">
-        <div class="sol-icon-wrap">🌡️</div>
-        <div class="sol-title">Testing &amp; Diagnostic Services</div>
-        <p class="sol-desc">Thermography, protection relay calibration and testing, PT &amp; CT testing, Electrical Power Quality Audits, and root cause analysis for persistent electrical faults.</p>
-        <div class="sol-arrow">→</div>
-      </div>
-      <div class="sol-card fade-up">
-        <div class="sol-icon-wrap">🖥️</div>
-        <div class="sol-title">Control Panel &amp; Automation Solutions</div>
-        <p class="sol-desc">PCC, MCC, APFC, DG Sync Panels and PLC panel services including upgrades, troubleshooting, retrofits, and modification. Full lifecycle support for industrial control infrastructure.</p>
-        <div class="sol-arrow">→</div>
-      </div>
-      <div class="sol-card fade-up">
-        <div class="sol-icon-wrap">🌍</div>
-        <div class="sol-title">Earthing &amp; Safety Solutions</div>
-        <p class="sol-desc">Earth pit reconditioning, earth resistance testing, compliance verification, and comprehensive electrical safety assessments to protect personnel and equipment.</p>
-        <div class="sol-arrow">→</div>
-      </div>
+      <div class="sol-card fade-up"><div class="sol-icon-wrap">🔌</div><div class="sol-title">Electrical Maintenance &amp; Asset Management</div><p class="sol-desc">Preventive, predictive, shutdown, and breakdown maintenance programs designed to improve equipment reliability and operational continuity. Tailored AMC packages for industries of all scales.</p><div class="sol-arrow">→</div></div>
+      <div class="sol-card fade-up"><div class="sol-icon-wrap">⚡</div><div class="sol-title">Switchgear Services</div><p class="sol-desc">Inspection, testing, calibration, refurbishment, retrofitting, and commissioning support for ACB, VCB, MCCB, and SF6 breakers. ABB-certified expertise for all major OEM equipment.</p><div class="sol-arrow">→</div></div>
+      <div class="sol-card fade-up"><div class="sol-icon-wrap">🔋</div><div class="sol-title">Transformer Reliability Solutions</div><p class="sol-desc">Preventive maintenance, diagnostics, health assessments, and commissioning support. Oil filtration, BDV test, acidity test, IR winding testing, OLTC servicing, and spares support.</p><div class="sol-arrow">→</div></div>
+      <div class="sol-card fade-up"><div class="sol-icon-wrap">🌡️</div><div class="sol-title">Testing &amp; Diagnostic Services</div><p class="sol-desc">Thermography, protection relay calibration and testing, PT &amp; CT testing, Electrical Power Quality Audits, and root cause analysis for persistent electrical faults.</p><div class="sol-arrow">→</div></div>
+      <div class="sol-card fade-up"><div class="sol-icon-wrap">🖥️</div><div class="sol-title">Control Panel &amp; Automation Solutions</div><p class="sol-desc">PCC, MCC, APFC, DG Sync Panels and PLC panel services including upgrades, troubleshooting, retrofits, and modification. Full lifecycle support for industrial control infrastructure.</p><div class="sol-arrow">→</div></div>
+      <div class="sol-card fade-up"><div class="sol-icon-wrap">🌍</div><div class="sol-title">Earthing &amp; Safety Solutions</div><p class="sol-desc">Earth pit reconditioning, earth resistance testing, compliance verification, and comprehensive electrical safety assessments to protect personnel and equipment.</p><div class="sol-arrow">→</div></div>
     </div>
   </div>
 </section>
@@ -851,9 +570,7 @@
     <div style="text-align:center;" class="fade-up">
       <div class="divider" style="margin:0 auto;"></div>
       <h2 class="section-title" style="margin-top:1rem;">Industries We Serve</h2>
-      <p class="section-lead" style="margin:0 auto; text-align:center;">
-        Our expertise spans a wide range of critical sectors, each with unique electrical reliability requirements.
-      </p>
+      <p class="section-lead" style="margin:0 auto; text-align:center;">Our expertise spans a wide range of critical sectors, each with unique electrical reliability requirements.</p>
     </div>
     <div class="ind-grid fade-up">
       <div class="ind-card"><div class="ind-icon">🏭</div><div class="ind-label">Manufacturing</div></div>
@@ -905,26 +622,12 @@
       <div class="section-eyebrow" style="justify-content:center;">Credentials</div>
       <div class="divider" style="margin:0 auto;"></div>
       <h2 class="section-title" style="margin-top:1rem;">Technical Excellence</h2>
-      <p class="section-lead" style="margin:0 auto; text-align:center;">
-        Our technical capabilities are backed by world-class training, international certifications, and advanced diagnostic tooling.
-      </p>
+      <p class="section-lead" style="margin:0 auto; text-align:center;">Our technical capabilities are backed by world-class training, international certifications, and advanced diagnostic tooling.</p>
     </div>
     <div class="tech-grid fade-up">
-      <div class="tech-card">
-        <div class="tech-icon">🏭</div>
-        <div class="tech-title">ABB Service Expertise</div>
-        <p class="tech-desc">Extensive experience in ABB electrical equipment servicing, testing, maintenance, and commissioning. Recognized as a trusted ABB service partner with deep OEM knowledge.</p>
-      </div>
-      <div class="tech-card">
-        <div class="tech-icon">🎓</div>
-        <div class="tech-title">International Training</div>
-        <p class="tech-desc">ABB SACE Service Hub Certification – Italy. Our technical team holds internationally recognized certifications that reflect the highest standards in electrical engineering service.</p>
-      </div>
-      <div class="tech-card">
-        <div class="tech-icon">🔬</div>
-        <div class="tech-title">Advanced Diagnostic Capability</div>
-        <p class="tech-desc">Equipped with industry-standard testing instruments including thermal imagers, relay test kits, HV test equipment, and power quality analyzers supporting predictive maintenance.</p>
-      </div>
+      <div class="tech-card"><div class="tech-icon">🏭</div><div class="tech-title">ABB Service Expertise</div><p class="tech-desc">Extensive experience in ABB electrical equipment servicing, testing, maintenance, and commissioning. Recognized as a trusted ABB service partner with deep OEM knowledge.</p></div>
+      <div class="tech-card"><div class="tech-icon">🎓</div><div class="tech-title">International Training</div><p class="tech-desc">ABB SACE Service Hub Certification – Italy. Our technical team holds internationally recognized certifications that reflect the highest standards in electrical engineering service.</p></div>
+      <div class="tech-card"><div class="tech-icon">🔬</div><div class="tech-title">Advanced Diagnostic Capability</div><p class="tech-desc">Equipped with industry-standard testing instruments including thermal imagers, relay test kits, HV test equipment, and power quality analyzers supporting predictive maintenance.</p></div>
     </div>
   </div>
 </section>
@@ -935,10 +638,7 @@
     <div class="breakdown-content fade-up">
       <div>
         <h2 class="breakdown-title">24/7 Breakdown Support —<br/>When Every Minute Counts</h2>
-        <p class="breakdown-text">
-          Electrical failures don't follow a schedule. Our technical team provides rapid troubleshooting support
-          to restore critical systems and minimize production losses — around the clock, every day of the year.
-        </p>
+        <p class="breakdown-text">Electrical failures don't follow a schedule. Our technical team provides rapid troubleshooting support to restore critical systems and minimize production losses — around the clock, every day of the year.</p>
         <div class="breakdown-highlights">
           <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">Rapid Emergency Response</div></div>
           <div class="breakdown-hl"><div class="breakdown-hl-dot"></div><div class="breakdown-hl-text">Expert Fault Diagnosis</div></div>
@@ -961,109 +661,12 @@
       <p class="section-lead">Industry-standard instruments enabling accurate diagnostics, predictive maintenance, and reliable commissioning.</p>
     </div>
     <div class="equip-grid fade-up">
-      <div class="equip-card">
-        <div class="equip-photo">
-          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="22" width="50" height="36" rx="5" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
-            <circle cx="35" cy="40" r="11" fill="#011d51" stroke="#ffffff" stroke-width="1.5"/>
-            <circle cx="35" cy="40" r="6" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <circle cx="35" cy="40" r="2.5" fill="#ffffff"/>
-            <rect x="60" y="30" width="10" height="20" rx="3" fill="#1a4a9e" stroke="#ffffff" stroke-width="1"/>
-            <rect x="15" y="27" width="8" height="5" rx="1" fill="#ffffff" opacity="0.4"/>
-            <line x1="22" y1="22" x2="22" y2="16" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="30" y1="22" x2="30" y2="14" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-            <line x1="38" y1="22" x2="38" y2="16" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <div class="equip-photo-badge">Thermal</div>
-        </div>
-        <div class="equip-info"><div class="equip-name">Thermal Imaging Camera</div><div class="equip-use">Predictive diagnostics &amp; hot-spot detection</div></div>
-      </div>
-      <div class="equip-card">
-        <div class="equip-photo">
-          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="18" width="44" height="44" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
-            <rect x="18" y="24" width="32" height="18" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <circle cx="24" cy="33" r="3" fill="#ffffff"/><circle cx="34" cy="33" r="3" fill="rgba(255,255,255,0.3)"/><circle cx="44" cy="33" r="3" fill="rgba(255,255,255,0.3)"/>
-            <rect x="18" y="47" width="14" height="8" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <rect x="36" y="47" width="14" height="8" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <line x1="24" y1="62" x2="24" y2="70" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="43" y1="62" x2="43" y2="70" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="24" cy="70" r="2" fill="#ffffff"/><circle cx="43" cy="70" r="2" fill="#ffffff"/>
-          </svg>
-          <div class="equip-photo-badge">Relay</div>
-        </div>
-        <div class="equip-info"><div class="equip-name">Relay Test Kit</div><div class="equip-use">Protection relay calibration &amp; testing</div></div>
-      </div>
-      <div class="equip-card">
-        <div class="equip-photo">
-          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="20" width="42" height="40" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
-            <rect x="14" y="26" width="30" height="14" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <polyline points="17,33 22,27 27,36 32,29 37,33 41,30" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="14" y="44" width="8" height="8" rx="1" fill="#ffffff" opacity="0.6"/>
-            <rect x="26" y="44" width="8" height="8" rx="1" fill="rgba(255,255,255,0.2)"/>
-            <rect x="38" y="44" width="8" height="8" rx="1" fill="rgba(255,255,255,0.2)"/>
-            <line x1="50" y1="30" x2="68" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="50" y1="50" x2="68" y2="58" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="70" cy="22" r="3" fill="#ffffff"/><circle cx="70" cy="58" r="3" fill="#ffffff"/>
-          </svg>
-          <div class="equip-photo-badge">ACB</div>
-        </div>
-        <div class="equip-info"><div class="equip-name">ACB Secondary Current Injection Kit</div><div class="equip-use">Breaker testing &amp; verification</div></div>
-      </div>
-      <div class="equip-card">
-        <div class="equip-photo">
-          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="15" y="20" width="50" height="32" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
-            <rect x="21" y="26" width="22" height="20" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <circle cx="32" cy="36" r="7" fill="#011d51" stroke="#ffffff" stroke-width="1.2"/>
-            <line x1="32" y1="30" x2="32" y2="42" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-            <line x1="26" y1="36" x2="38" y2="36" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-            <line x1="32" y1="33" x2="36" y2="36" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="47" y="27" width="12" height="7" rx="1" fill="#011d51" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-            <rect x="47" y="37" width="12" height="7" rx="1" fill="#011d51" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-            <line x1="25" y1="52" x2="25" y2="62" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="55" y1="52" x2="55" y2="62" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="25" cy="63" r="2" fill="#ffffff"/><circle cx="55" cy="63" r="2" fill="#ffffff"/>
-          </svg>
-          <div class="equip-photo-badge">Resistance</div>
-        </div>
-        <div class="equip-info"><div class="equip-name">Contact Resistance Measurement Kit</div><div class="equip-use">Switchgear contact quality assessment</div></div>
-      </div>
-      <div class="equip-card">
-        <div class="equip-photo">
-          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="22" width="44" height="36" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
-            <polygon points="32,28 26,40 31,40 28,52 42,36 36,36 40,28" fill="#ffffff" opacity="0.8"/>
-            <rect x="58" y="28" width="10" height="24" rx="3" fill="#1a4a9e" stroke="#ffffff" stroke-width="1"/>
-            <line x1="54" y1="35" x2="58" y2="35" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="54" y1="40" x2="58" y2="40" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="54" y1="45" x2="58" y2="45" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="32" y1="58" x2="32" y2="66" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="32" cy="68" r="2.5" fill="#ffffff"/>
-          </svg>
-          <div class="equip-photo-badge">HV</div>
-        </div>
-        <div class="equip-info"><div class="equip-name">High Voltage Test Kit</div><div class="equip-use">Insulation &amp; dielectric strength testing</div></div>
-      </div>
-      <div class="equip-card">
-        <div class="equip-photo">
-          <svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="16" width="40" height="36" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/>
-            <rect x="18" y="22" width="28" height="18" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <polyline points="20,31 25,25 30,34 35,27 40,31 44,28" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="22" cy="43" r="3" fill="#ffffff" opacity="0.7"/>
-            <circle cx="32" cy="43" r="3" fill="rgba(255,255,255,0.2)"/>
-            <circle cx="42" cy="43" r="3" fill="rgba(255,255,255,0.2)"/>
-            <line x1="32" y1="52" x2="32" y2="58" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="22" y1="60" x2="42" y2="60" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-            <line x1="25" y1="63" x2="39" y2="63" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="28" y1="66" x2="36" y2="66" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
-          </svg>
-          <div class="equip-photo-badge">Earth</div>
-        </div>
-        <div class="equip-info"><div class="equip-name">Earth Resistance Tester</div><div class="equip-use">Grounding system compliance &amp; safety</div></div>
-      </div>
+      <div class="equip-card"><div class="equip-photo"><svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="22" width="50" height="36" rx="5" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/><circle cx="35" cy="40" r="11" fill="#011d51" stroke="#ffffff" stroke-width="1.5"/><circle cx="35" cy="40" r="6" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="35" cy="40" r="2.5" fill="#ffffff"/><rect x="60" y="30" width="10" height="20" rx="3" fill="#1a4a9e" stroke="#ffffff" stroke-width="1"/><rect x="15" y="27" width="8" height="5" rx="1" fill="#ffffff" opacity="0.4"/></svg><div class="equip-photo-badge">Thermal</div></div><div class="equip-info"><div class="equip-name">Thermal Imaging Camera</div><div class="equip-use">Predictive diagnostics &amp; hot-spot detection</div></div></div>
+      <div class="equip-card"><div class="equip-photo"><svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="18" width="44" height="44" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/><rect x="18" y="24" width="32" height="18" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="24" cy="33" r="3" fill="#ffffff"/><circle cx="34" cy="33" r="3" fill="rgba(255,255,255,0.3)"/><circle cx="44" cy="33" r="3" fill="rgba(255,255,255,0.3)"/></svg><div class="equip-photo-badge">Relay</div></div><div class="equip-info"><div class="equip-name">Relay Test Kit</div><div class="equip-use">Protection relay calibration &amp; testing</div></div></div>
+      <div class="equip-card"><div class="equip-photo"><svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="20" width="42" height="40" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/><rect x="14" y="26" width="30" height="14" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><polyline points="17,33 22,27 27,36 32,29 37,33 41,30" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="equip-photo-badge">ACB</div></div><div class="equip-info"><div class="equip-name">ACB Secondary Current Injection Kit</div><div class="equip-use">Breaker testing &amp; verification</div></div></div>
+      <div class="equip-card"><div class="equip-photo"><svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="20" width="50" height="32" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/><rect x="21" y="26" width="22" height="20" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="32" cy="36" r="7" fill="#011d51" stroke="#ffffff" stroke-width="1.2"/><line x1="32" y1="33" x2="36" y2="36" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/></svg><div class="equip-photo-badge">Resistance</div></div><div class="equip-info"><div class="equip-name">Contact Resistance Measurement Kit</div><div class="equip-use">Switchgear contact quality assessment</div></div></div>
+      <div class="equip-card"><div class="equip-photo"><svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="22" width="44" height="36" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/><polygon points="32,28 26,40 31,40 28,52 42,36 36,36 40,28" fill="#ffffff" opacity="0.8"/></svg><div class="equip-photo-badge">HV</div></div><div class="equip-info"><div class="equip-name">High Voltage Test Kit</div><div class="equip-use">Insulation &amp; dielectric strength testing</div></div></div>
+      <div class="equip-card"><div class="equip-photo"><svg class="equip-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="16" width="40" height="36" rx="4" fill="#1a4a9e" stroke="#ffffff" stroke-width="1.5"/><rect x="18" y="22" width="28" height="18" rx="2" fill="#011d51" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><polyline points="20,31 25,25 30,34 35,27 40,31 44,28" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="equip-photo-badge">Earth</div></div><div class="equip-info"><div class="equip-name">Earth Resistance Tester</div><div class="equip-use">Grounding system compliance &amp; safety</div></div></div>
     </div>
     <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;" class="fade-up">
       <span class="badge" style="background:#f0f2f5; border-color:#d0d5da; color:#2a3a4a;">Multimeters</span>
@@ -1082,9 +685,7 @@
       <div class="section-eyebrow" style="justify-content:center;">Our Clients</div>
       <div class="divider" style="margin:0 auto;"></div>
       <h2 class="section-title" style="margin-top:1rem;">Trusted by Industry Leaders</h2>
-      <p class="section-lead" style="margin:0 auto; text-align:center;">
-        Supporting critical electrical infrastructure across technology, financial services, commercial real estate, and energy sectors.
-      </p>
+      <p class="section-lead" style="margin:0 auto; text-align:center;">Supporting critical electrical infrastructure across technology, financial services, commercial real estate, and energy sectors.</p>
     </div>
     <div class="clients-marquee fade-in">
       <div class="clients-track" id="clientsTrack">
@@ -1100,7 +701,6 @@
         <div class="client-chip"><div class="client-chip-dot"></div><div class="client-chip-name">Apollo Power Systems</div></div>
         <div class="client-chip"><div class="client-chip-dot"></div><div class="client-chip-name">Sinewave Generators</div></div>
         <div class="client-chip"><div class="client-chip-dot"></div><div class="client-chip-name">Manyata Tech Park</div></div>
-        <!-- Duplicate set for seamless loop -->
         <div class="client-chip"><div class="client-chip-dot"></div><div class="client-chip-name">Microsoft</div></div>
         <div class="client-chip"><div class="client-chip-dot"></div><div class="client-chip-name">American Express</div></div>
         <div class="client-chip"><div class="client-chip-dot"></div><div class="client-chip-name">Texas Instruments</div></div>
@@ -1132,34 +732,10 @@
       <div class="fade-up">
         <h3 style="font-family:'Calibri',sans-serif; color:white; font-size:1.2rem; margin-bottom:1.5rem;">Get in Touch</h3>
         <div class="contact-items">
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div>
-              <div class="contact-item-label">Address</div>
-              <div class="contact-item-value">Basaveshwara Nagar, Bengaluru – 560079</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div>
-              <div class="contact-item-label">Phone</div>
-              <a href="tel:+919972595963" class="contact-item-value">+91 99725 95963</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">📧</div>
-            <div>
-              <div class="contact-item-label">Email</div>
-              <a href="mailto:dharthiengineers@yahoo.co.in" class="contact-item-value">dharthiengineers@yahoo.co.in</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">🌐</div>
-            <div>
-              <div class="contact-item-label">Website</div>
-              <a href="https://www.dharthiengineers.com" target="_blank" class="contact-item-value">www.dharthiengineers.com</a>
-            </div>
-          </div>
+          <div class="contact-item"><div class="contact-item-icon">📍</div><div><div class="contact-item-label">Address</div><div class="contact-item-value">Basaveshwara Nagar, Bengaluru – 560079</div></div></div>
+          <div class="contact-item"><div class="contact-item-icon">📞</div><div><div class="contact-item-label">Phone</div><a href="tel:+919972595963" class="contact-item-value">+91 99725 95963</a></div></div>
+          <div class="contact-item"><div class="contact-item-icon">📧</div><div><div class="contact-item-label">Email</div><a href="mailto:dharthiengineers@yahoo.co.in" class="contact-item-value">dharthiengineers@yahoo.co.in</a></div></div>
+          <div class="contact-item"><div class="contact-item-icon">🌐</div><div><div class="contact-item-label">Website</div><a href="https://www.dharthiengineers.com" target="_blank" class="contact-item-value">www.dharthiengineers.com</a></div></div>
         </div>
         <div style="margin-top:2rem; padding:1.5rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:10px;">
           <div style="color:white; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem;">⚡ Emergency Breakdown?</div>
@@ -1204,26 +780,10 @@
 <section id="values" style="background: #011d51; padding: 4rem 0;">
   <div class="section-inner">
     <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;">
-      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">✅</div>
-        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Quality</div>
-        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Delivering excellence in every project.</div>
-      </div>
-      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">⛑️</div>
-        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Safety</div>
-        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">A culture of safety, for everyone.</div>
-      </div>
-      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">🤝</div>
-        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Commitment</div>
-        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Committed to our clients, always.</div>
-      </div>
-      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center; transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">🏅</div>
-        <div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Reliability</div>
-        <div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Reliable solutions. Long-lasting results.</div>
-      </div>
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">✅</div><div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Quality</div><div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Delivering excellence in every project.</div></div>
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">⛑️</div><div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Safety</div><div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">A culture of safety, for everyone.</div></div>
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">🤝</div><div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Commitment</div><div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Committed to our clients, always.</div></div>
+      <div style="padding:2.5rem 2rem; background:rgba(1,29,81,0.7); text-align:center;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(1,29,81,0.7)'"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;">🏅</div><div style="color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">Reliability</div><div style="color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.7;">Reliable solutions. Long-lasting results.</div></div>
     </div>
   </div>
 </section>
@@ -1247,40 +807,61 @@
   </div>
 </footer>
 
-<!-- SCROLL TOP -->
 <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
-
-<!-- NOTIFICATION -->
-<div id="notification">
-  <p><strong>✅ Message sent!</strong><br/>We'll get back to you within 24 hours.</p>
-</div>
+<div id="notification"><p><strong>✅ Message sent!</strong><br/>We'll get back to you within 24 hours.</p></div>
 
 <script>
-  // Hamburger menu
+  // Hamburger
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') navLinks.classList.remove('open'); });
 
-  // Scroll-to-top button
+  // Scroll top
   const scrollBtn = document.getElementById('scrollTop');
   window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 400));
 
-  // Intersection Observer for fade animations
+  // === SLIDER ===
+  let currentSlide = 0;
+  let autoSlideTimer;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slides.length;
+
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (n + totalSlides) % totalSlides;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    resetAutoSlide();
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => goToSlide(currentSlide + 1), 5500);
+  }
+
+  document.getElementById('sliderNext').addEventListener('click', () => goToSlide(currentSlide + 1));
+  document.getElementById('sliderPrev').addEventListener('click', () => goToSlide(currentSlide - 1));
+  dots.forEach(dot => dot.addEventListener('click', () => goToSlide(+dot.dataset.index)));
+
+  // Start auto-slide
+  resetAutoSlide();
+
+  // Fade animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
 
-  // Staggered animation for grid children
+  // Staggered animations
   const staggerObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const children = entry.target.querySelectorAll('.why-card, .sol-card, .ind-card, .equip-card, .tech-card');
-        children.forEach((child, i) => {
-          child.style.transitionDelay = `${i * 80}ms`;
-          child.classList.add('visible');
-        });
+        children.forEach((child, i) => { child.style.transitionDelay = `${i * 80}ms`; child.classList.add('visible'); });
       }
     });
   }, { threshold: 0.05 });
@@ -1289,46 +870,7 @@
     staggerObserver.observe(el);
   });
 
-  // Active nav link highlighting
-  const sections = document.querySelectorAll('section[id], .hero');
-  const navAnchors = document.querySelectorAll('.nav-links a');
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navAnchors.forEach(a => a.style.color = a.getAttribute('href') === `#${id}` ? '#011d51' : '');
-      }
-    });
-  }, { threshold: 0.35 });
-  sections.forEach(s => navObserver.observe(s));
-
-  // Counter animation for hero stats
-  function animateCounter(el, target, suffix = '') {
-    let start = 0;
-    const duration = 2000;
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-  const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const nums = entry.target.querySelectorAll('.stat-num');
-        nums[0] && animateCounter(nums[0], 20, '+');
-        nums[1] && animateCounter(nums[1], 35, '+');
-        heroObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-  const heroStats = document.querySelector('.hero-stats');
-  if (heroStats) heroObserver.observe(heroStats);
-
-  // Form submission
+  // Form submit
   function handleFormSubmit() {
     const name = document.getElementById('cName').value;
     const email = document.getElementById('cEmail').value;
@@ -1340,25 +882,14 @@
     document.getElementById('cService').selectedIndex = 0;
   }
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') navLinks.classList.remove('open'); });
-
-  // Smooth reveal for hero on load
-  document.addEventListener('DOMContentLoaded', () => {
-    const heroElements = document.querySelectorAll('.hero-eyebrow, .hero-title, .hero-tagline, .hero-actions, .hero-stats');
-    heroElements.forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = `opacity 0.7s ease ${i * 0.12}s, transform 0.7s ease ${i * 0.12}s`;
-      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 100 + i * 120);
-    });
-    const heroCards = document.querySelectorAll('.service-card');
-    heroCards.forEach((card, i) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateX(20px)';
-      card.style.transition = `opacity 0.6s ease ${0.4 + i * 0.1}s, transform 0.6s ease ${0.4 + i * 0.1}s`;
-      setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateX(0)'; }, 100);
-    });
-  });
+  // Touch/swipe support for slider
+  let touchStartX = 0;
+  const heroEl = document.querySelector('.hero');
+  heroEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  heroEl.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+  }, { passive: true });
 </script>
 </body>
 </html>
