@@ -150,11 +150,11 @@ nav {
   padding-bottom: 78px;
 }
 .slide.active { opacity: 1; z-index: 1; }
-.slide-1 { background: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1800&auto=format&fit=crop') center/cover no-repeat; }
-.slide-2 { background: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1800&auto=format&fit=crop') center/cover no-repeat; }
-.slide-3 { background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&auto=format&fit=crop') center/cover no-repeat; }
-.slide-4 { background: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1800&auto=format&fit=crop') center/cover no-repeat; }
-.slide-5 { background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1800&auto=format&fit=crop') center/cover no-repeat; }
+.slide-1 { background: url('./pic1.jpeg') center/cover no-repeat; }
+.slide-2 { background: url('./pic2.jpeg') center/cover no-repeat; }
+.slide-3 { background: url('./pic3.jpeg') center/cover no-repeat; }
+.slide-4 { background: url('./pic4.jpeg') center/cover no-repeat; }
+.slide-5 { background: url('./pic5.jpeg') center/cover no-repeat; }
 .slide::before {
   content: '';
   position: absolute; inset: 0;
@@ -212,7 +212,7 @@ nav {
   transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
   position: relative; z-index: 3;
 }
-.slide-title .accent { border-bottom: 3px solid rgba(255,255,255,0.4); }
+.slide-title .accent { border-bottom: none; }
 .slide-desc {
   font-size: 0.98rem; color: rgba(255,255,255,0.7);
   line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px;
@@ -308,25 +308,25 @@ nav {
 }
 
 /* ── SECTION COMMON ── */
-section { padding: 4rem 0; }
+.section { padding: 3rem 0; }
 .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 .section-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  color: #4a5c6e; font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem;
+  color: #4a5c6e; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem;
   font-family: 'Poppins', sans-serif;
 }
-.section-eyebrow::before { content: '—'; color: #011d51; margin-right: 2px; }
+.section-eyebrow::before { content: none; }
 .section-title {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 700;
-  color: #011d51; line-height: 1.2; margin-bottom: 1rem;
+  color: #011d51; line-height: 1.2; margin-bottom: 0.6rem;
 }
 .section-title.light { color: white; }
 .section-lead { font-size: 0.98rem; color: #4a5c6e; line-height: 1.7; max-width: 640px; }
 .section-lead.light { color: rgba(255,255,255,0.65); }
-.divider { width: 55px; height: 3px; background: #011d51; margin-bottom: 1.5rem; }
-.divider.light { background: #ffffff; }
+.divider { display: none; }
+.divider.light { display: none; }
 
 @media(max-width:600px) {
   section { padding: 3rem 0; }
@@ -405,6 +405,9 @@ section { padding: 4rem 0; }
 .founder-name { font-family: 'Poppins', sans-serif; font-size: 1.1rem; color: white; font-weight: 700; }
 .founder-title { color: #8a99aa; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
 
+/* Slightly increase eyebrow in founder area for better readability */
+#founder .section-eyebrow { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+
 /* ── VISION MISSION ── */
 #vision { background: #ffffff; }
 .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
@@ -443,7 +446,7 @@ section { padding: 4rem 0; }
 .deliver-item:hover { background: rgba(255,255,255,0.06); }
 .deliver-icon { font-size: 2rem; margin-bottom: 0.75rem; }
 .deliver-title { color: white; font-weight: 600; font-size: 0.85rem; line-height: 1.4; font-family: 'Poppins', sans-serif; }
-.deliver-bar { width: 28px; height: 2px; background: #ffffff; margin: 10px auto 0; opacity: 0.5; }
+.deliver-bar { display: none; }
 
 /* ── SOLUTIONS ── */
 #solutions { background: #ffffff; }
@@ -452,11 +455,11 @@ section { padding: 4rem 0; }
 @media(max-width:600px) { .solutions-grid { grid-template-columns: 1fr; } }
 .sol-card { border: 1px solid #e8edf2; border-radius: 12px; padding: 1.8rem; position: relative; overflow: hidden; transition: all 0.3s; background: #ffffff; }
 .sol-card:hover { border-color: #011d51; box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-4px); }
-.sol-card:hover .sol-arrow { transform: translateX(4px); color: #011d51; }
+.sol-card:hover .sol-arrow { transform: none; }
 .sol-icon-wrap { width: 50px; height: 50px; border-radius: 10px; background: linear-gradient(135deg, #011d51, #01113a); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.25rem; }
 .sol-title { font-weight: 700; font-size: 0.95rem; color: #011d51; margin-bottom: 0.75rem; font-family: 'Poppins', sans-serif; }
 .sol-desc { font-size: 0.82rem; color: #4a5c6e; line-height: 1.7; }
-.sol-arrow { display: inline-block; margin-top: 1rem; color: #8a99aa; font-size: 1rem; transition: all 0.25s; }
+.sol-arrow { display: none; }
 
 /* ── INDUSTRIES ── */
 #industries { background: #ffffff; }
@@ -539,6 +542,9 @@ section { padding: 4rem 0; }
   font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 900;
   color: #ffffff; line-height: 1.15; margin-bottom: 2rem;
 }
+
+/* Keep the eyebrow and remove the large H2 as per design notes */
+.contact-heading { display: none; }
 .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
 .contact-detail-icon {
   width: 38px; height: 38px;
