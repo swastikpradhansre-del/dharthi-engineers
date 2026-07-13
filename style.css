@@ -414,7 +414,7 @@ section:not(.hero) { padding: 2.5rem 0; }
 
 /* ── FOUNDER ── */
 #founder { background: #011d51; }
-.founder-grid { display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: start; }
+.founder-grid { display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: center; }
 @media(max-width:900px) { .founder-grid { grid-template-columns: 1fr; gap: 2rem; } }
 .founder-photo {
   width: 300px; height: 300px;
@@ -425,7 +425,7 @@ section:not(.hero) { padding: 2.5rem 0; }
   flex-shrink: 0; box-shadow: 0 18px 42px rgba(0,0,0,0.24);
 }
 .founder-photo img {
-  width: 110%; height: 110%; object-fit: cover; object-position: center;
+  width: 100%; height: 100%; object-fit: cover; object-position: center center;
   display: block;
 }
 @media(max-width:900px) { .founder-photo { width: 260px; height: 260px; margin: 0 auto; } }
@@ -445,7 +445,32 @@ section:not(.hero) { padding: 2.5rem 0; }
 .founder-title { color: #8a99aa; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
 
 /* Slightly increase eyebrow in founder area for better readability */
-#founder .section-eyebrow { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+#founder .section-eyebrow { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.6rem; width:100%; justify-content:center; text-align:center; }
+
+/* Improve emoji / symbol rendering and visibility across sections */
+.about-highlight-icon,
+.about-panel-icon,
+.why-icon,
+.value-icon,
+.deliver-icon,
+.ind-icon,
+.slide-deco,
+.sol-icon-wrap,
+.tech-icon,
+.equip-photo-badge,
+.contact-detail-icon,
+.client-chip-dot,
+.nav-logo-icon img {
+  font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', 'Poppins', sans-serif;
+  display: inline-flex; align-items: center; justify-content: center;
+  line-height: 1; vertical-align: middle; text-rendering: optimizeLegibility;
+}
+
+/* Add subtle text-shadow for small light-on-light contexts to improve contrast */
+.about-highlight-icon, .deliver-icon, .ind-icon, .why-icon, .value-icon { text-shadow: 0 1px 0 rgba(0,0,0,0.12); }
+
+/* Ensure decorative large symbols in hero are slightly more visible */
+.slide-deco { opacity: 0.08; }
 
 /* ── VISION MISSION ── */
 #vision { background: #ffffff; }
