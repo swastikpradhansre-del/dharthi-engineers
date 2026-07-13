@@ -162,7 +162,7 @@ nav {
 .slide-1 { background: url('./pic1.jpeg') center/cover no-repeat; }
 .slide-2 { background: url('./pic2.jpeg') center/cover no-repeat; }
 .slide-3 { background: url('./pic3.jpeg') center/cover no-repeat; }
-.slide-4 { background: url('./pic4.jpeg') center/cover no-repeat; }
+.slide-4 { background: url('./pic6.jpeg') center/cover no-repeat; }
 .slide-5 { background: url('./pic5.jpeg') center/cover no-repeat; }
 .slide::before {
   content: '';
@@ -445,7 +445,17 @@ section:not(.hero) { padding: 2.5rem 0; }
 .founder-title { color: #8a99aa; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
 
 /* Slightly increase eyebrow in founder area for better readability */
-#founder .section-eyebrow { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.6rem; width:100%; justify-content:center; text-align:center; }
+#founder .section-eyebrow {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1rem;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
 /* Improve emoji / symbol rendering and visibility across sections */
 .about-highlight-icon,
